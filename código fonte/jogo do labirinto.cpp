@@ -1,4 +1,17 @@
 #include <stdio.h>
+void jogo()//Função principal do jogo
+{
+	do
+	{
+		
+	}
+	while(1);
+}
+int sorteio_passos()//Função para calcular quantos passos poderão ser realiazdos pelos jogadores
+{
+	int passos;
+	return passos;
+}
 void mensagens(int situacao_agora, int player, int passos)
 //situacao_agora == recebera um valor inteiro para determinar qual mensagem será mostrada || player == int p/ identificar qual player || quantos passos serão dados e quantos restam
 {
@@ -27,26 +40,13 @@ void mensagens(int situacao_agora, int player, int passos)
 	}
 }
 char mapa()			//Ainda estou com muitas duvida sobre como  utilizar vetores e matrizes
-{
-	char mapa1[12][12]
-	{
-	'X','X','X','X','X','X','X','X','X','X','X','X',
-	'X','*','*','*','*','*','*','*','*','*','*','X',
-	'X','*','*','*','*','*','*','*','*','*','*','X',	
-	'X','*','*','*','*','*','*','*','*','*','*','X',	
-	'X','*','*','*','*','*','*','*','*','*','*','X',	
-	'X','*','*','*','*','*','*','*','*','*','*','X',
-	'X','*','*','*','*','*','*','*','*','*','*','X',
-	'X','*','*','*','*','*','*','*','*','*','*','X',
-	'X','*','*','*','*','*','*','*','*','*','*','X',
-	'X','*','*','*','*','*','*','*','*','*','*','X',
-	'X','*','*','*','*','*','*','*','*','*','*','X',
-	'X','X','X','X','X','X','X','X','X','X','X','X'
-	}
+{	
+	int linhas=12,colunas=12;
+	char mapa1[linhas][colunas];
 	
-}
+} 
 int main()
 {
-	
+	jogo();
 	return 1;
 }
