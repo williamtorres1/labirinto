@@ -1,5 +1,6 @@
 #include <stdio.h>
-void mensagens(int situacao_agora, int player, int passos)//irá receber um valor inteiro que irá mostrar a mensagem
+void mensagens(int situacao_agora, int player, int passos)
+//situacao_agora == recebera um valor inteiro para determinar qual mensagem será mostrada || player == int p/ identificar qual player || quantos passos serão dados e quantos restam
 {
 	switch(situacao_agora)
 	{
