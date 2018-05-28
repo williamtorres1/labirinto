@@ -4,15 +4,38 @@
 *							  *
 *							  *
 ******************************/
+
+
 #include <stdio.h>
 #include <stdlib.h>//Biblioteca necessária para gerar numeros aleatorios (passos e distribuicaoo das armadilhas, tochas e o tesouro
 #include <conio.h>//Biblioteca para ler as teclas digitadas pelo usuario, com proposito de faze-lo percorrer o mapa(matriz)
 #include <time.h>//Biblioteca para complementacao da funcao srand()
+
+
 void sorteio_passos(int *Passos)//Funcao para calcular quantos passos poderao ser realizados pelos jogadores
-{
+{	zsrand(time(NULL));
 	*Passos=3+rand()%10;	//esta funcao sera substituida por srand(time(NULL)), para sempre ter numeros aleatorios a cada execucao
 							//mas para saber se o jogo esta funcionando, iremos trabalhar com valores constantes
 }
+
+void sorteio_distribuicao()
+{	int num_trap=0;
+	num_fire=rand()%32;
+	for(int trap=0;trap<=num_trap;trap++)
+	{	
+		for()//laco para distribuir a
+	}
+	int num_tocha=0;
+	num_tocha=rand()% ;
+	for(int tocha=0;tocha<=num_tocha;tocha++)
+	{
+		for()//laco para distruibuir as tochas
+	}
+	int gold=1;
+	where_gold=rand()%98;
+	for()//Laco para distribuir o tesouro
+}
+
 void mensagens(int situacao_agora, int player, int passos)
 //situacao_agora == recebera um valor inteiro para determinar qual mensagem sera mostrada
 //player == int p/ identificar qual player || quantos passos serao dados e quantos restam
@@ -40,11 +63,13 @@ void mensagens(int situacao_agora, int player, int passos)
 			break;
 		}
 		case 6:
-		{	printf("Player %d GANHOU!! PARABÃ‰NS",player);
+		{	printf("Player %d GANHOU!! PARABENSS",player);
 			break;
 		}
 	}
 }
+
+
 void mapa()			//Ainda estou com muitas duvida sobre como  utilizar vetores e matrizes
 {	
 	int linhas=12,colunas=12;
@@ -65,14 +90,20 @@ void mapa()			//Ainda estou com muitas duvida sobre como  utilizar vetores e mat
 	};
 	
 }
+
+
 void player1()
 {
 	
 }
+
+
 void player2()
 {
 	
 }
+
+
 void jogo()//Funcao principal do jogo
 {
 	int passos,player;
@@ -86,8 +117,11 @@ void jogo()//Funcao principal do jogo
 	}
 	while(1);
 }
+
+
 int main()
-{
+{	
+	
 	jogo();
 	putchar('\n');
 	system("pause");
