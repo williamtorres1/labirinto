@@ -48,7 +48,7 @@ void mensagens(int situacao_agora, int player, int passos)
 void mapa()			//Ainda estou com muitas duvida sobre como  utilizar vetores e matrizes
 {	
 	int linhas=12,colunas=12;
-	char mapa1[linhas][colunas]	// Modelo do labirito a ser percorrido, os caracteres 'X' serao as paredes que noa poderao ser atravessadas
+	char mapa1[linhas][colunas]	// Modelo do labirito a ser percorrido, os caracteres 'X' serao as paredes que nao poderao ser atravessadas
 	{
 	'X','X','X','X','X','X','X','X','X','X','X','X',
 	'X','*','*','*','*','*','*','*','*','*','*','X',
