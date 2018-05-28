@@ -1,11 +1,11 @@
 /******************************
-*	File:Saturn Project	      *
-*	Author: William Torres    *
-*							  *
-*							  *
+*	File:Saturn Project	*
+*	Author: William Torres  *
+*				*
+*				*
 ******************************/
 #include <stdio.h>
-#include <stdlib.h>//Biblioteca necess�ria para gerar numeros aleatorios (passos e distribuicaoo das armadilhas, tochas e o tesouro
+#include <stdlib.h>//Biblioteca necessária para gerar numeros aleatorios (passos e distribuicaoo das armadilhas, tochas e o tesouro
 #include <conio.h>//Biblioteca para ler as teclas digitadas pelo usuario, com proposito de faze-lo percorrer o mapa(matriz)
 #include <time.h>//Biblioteca para complementacao da funcao srand()
 void sorteio_passos(int *Passos)//Funcao para calcular quantos passos poderao ser realizados pelos jogadores
@@ -40,7 +40,7 @@ void mensagens(int situacao_agora, int player, int passos)
 			break;
 		}
 		case 6:
-		{	printf("Player %d GANHOU!! PARABÉNS",player);
+		{	printf("Player %d GANHOU!! PARABÃ‰NS",player);
 			break;
 		}
 	}
