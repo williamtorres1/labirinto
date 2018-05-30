@@ -5,19 +5,15 @@
 *							  *
 ******************************/
 
-
-<<<<<<< HEAD
 #include <stdio.h>//Biblioteca p/ printf e putchar
-=======
 #include <stdio.h>
->>>>>>> 882755fd218376746c2eb035c8be52df671339b6
 #include <stdlib.h>//Biblioteca necessária para gerar numeros aleatorios (passos e distribuicaoo das armadilhas, tochas e o tesouro
 #include <conio.h>//Biblioteca para ler as teclas digitadas pelo usuario, com proposito de faze-lo percorrer o mapa(matriz)
 #include <time.h>//Biblioteca para complementacao da funcao srand()
 
 
 void sorteio_passos(int *Passos)//Funcao para calcular quantos passos poderao ser realizados pelos jogadores
-{	zsrand(time(NULL));
+{	srand(time(NULL));
 	*Passos=3+rand()%10;	//esta funcao sera substituida por srand(time(NULL)), para sempre ter numeros aleatorios a cada execucao
 							//mas para saber se o jogo esta funcionando, iremos trabalhar com valores constantes
 }
@@ -78,21 +74,7 @@ void mapa()			//Ainda estou com muitas duvida sobre como  utilizar vetores e mat
 {	
 	int linhas=12,colunas=12,i=0,j=0;
 	char mapa1[linhas][colunas]	// Modelo do labirito a ser percorrido, os caracteres 'X' serao as paredes que noa poderao ser atravessadas
-/*	{
-	'X','X','X','X','X','X','X','X','X','X','X','X',
-	'X','*','*','*','*','*','*','*','*','*','*','X',
-	'X','*','*','*','*','*','*','*','*','*','*','X',	
-	'X','*','*','*','*','*','*','*','*','*','*','X',	
-	'X','*','*','*','*','*','*','*','*','*','*','X',	
-	'X','*','*','*','*','*','*','*','*','*','*','X',
-	'X','*','*','*','*','*','*','*','*','*','*','X',
-	'X','*','*','*','*','*','*','*','*','*','*','X',
-	'X','*','*','*','*','*','*','*','*','*','*','X',
-	'X','*','*','*','*','*','*','*','*','*','*','X',
-	'X','*','*','*','*','*','*','*','*','*','*','X',
-	'X','X','X','X','X','X','X','X','X','X','X','X'
-	};
-
+/*	
 	[i][j]
 	[0][0] [0][1] [0][2] [0][3] [0][4] [0][5] [0][6] [0][7] [0][8] [0][9] [0][10] [0][11]
 	[1][0] [1][1] [1][2] [1][3] [1][4] [1][5] [1][6] [1][7] [1][8] [1][9] [1][10] [1][11]
