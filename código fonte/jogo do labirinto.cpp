@@ -6,7 +6,11 @@
 ******************************/
 
 
+<<<<<<< HEAD
 #include <stdio.h>//Biblioteca p/ printf e putchar
+=======
+#include <stdio.h>
+>>>>>>> 882755fd218376746c2eb035c8be52df671339b6
 #include <stdlib.h>//Biblioteca necessária para gerar numeros aleatorios (passos e distribuicaoo das armadilhas, tochas e o tesouro
 #include <conio.h>//Biblioteca para ler as teclas digitadas pelo usuario, com proposito de faze-lo percorrer o mapa(matriz)
 #include <time.h>//Biblioteca para complementacao da funcao srand()
