@@ -7,7 +7,7 @@
 
 #include <stdio.h>//Biblioteca p/ printf e putchar
 #include <stdio.h>
-#include <stdlib.h>//Biblioteca necess·ria para gerar numeros aleatorios (passos e distribuicaoo das armadilhas, tochas e o tesouro
+#include <stdlib.h>//Biblioteca necess√°ria para gerar numeros aleatorios (passos e distribuicaoo das armadilhas, tochas e o tesouro
 #include <conio.h>//Biblioteca para ler as teclas digitadas pelo usuario, com proposito de faze-lo percorrer o mapa(matriz)
 #include <time.h>//Biblioteca para complementacao da funcao srand()
 
@@ -91,7 +91,7 @@ void mapa()			//Ainda estou com muitas duvida sobre como  utilizar vetores e mat
 	
 	*/
 	{
-    {'X','X','X','X','S','E','X','X','X','X','X','X'},
+    {'X','X','X','X','X','X','X','X','X','X','X','X'},
     {'X','*','*','*','*','*','*','*','*','*','*','*'},
     {'X','*','*','*','*','*','*','*','*','*','*','*'},
     {'X','*','*','*','*','*','*','*','*','*','*','*'},
@@ -102,9 +102,9 @@ void mapa()			//Ainda estou com muitas duvida sobre como  utilizar vetores e mat
     {'X','*','*','*','*','*','*','*','*','*','*','*'},
     {'X','*','*','*','*','*','*','*','*','*','*','*'},
     {'X','*','*','*','*','*','*','*','*','*','*','*'},
-    {'X','X','X','X','S','E','X','X','X','X','X','X'},
+    {'X','X','X','X','X','X','X','X','X','X','X','X'},
   };
-	//LaÁo for para mostrar todos os elementos da matriz
+	//La√ßo for para mostrar todos os elementos da matriz
 	//INCOMPLETO
 	for(i=0;i<12;++i)
 	{
