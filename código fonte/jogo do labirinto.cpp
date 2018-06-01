@@ -19,21 +19,22 @@ void sorteio_passos(int *Passos)//Funcao para calcular quantos passos poderao se
 }
 
 void sorteio_distribuicao()
-{	int num_trap=0;
+{	int num_trap=0,num_fire,where_gold;
 	num_fire=rand()%32;
+	printf("Serao impressas %d armadilhas",num_fire);
 	for(int trap=0;trap<=num_trap;trap++)
 	{	
-		for()//laco para distribuir a
+		//for()			laco para distribuir as traps
 	}
 	int num_tocha=0;
-	num_tocha=rand()% ;
+	num_tocha=rand()%15;
 	for(int tocha=0;tocha<=num_tocha;tocha++)
 	{
-		for()//laco para distruibuir as tochas
+		//for()laco para distruibuir as tochas
 	}
 	int gold=1;
 	where_gold=rand()%98;
-	for()//Laco para distribuir o tesouro
+//	for()Laco para distribuir o tesouro
 }
 
 void mensagens(int situacao_agora, int player, int passos)
@@ -43,7 +44,7 @@ void mensagens(int situacao_agora, int player, int passos)
 	switch(situacao_agora)
 	{	
 		case 1:
-		{	printf("\t\t\tBem-vindo a caca ao Tesouro!\n");
+		{	printf("\t\t\tBem-vindo a caca ao Tesouro!\n\n\n");
 			break;
 		}
 		case 2:
@@ -72,7 +73,7 @@ void mensagens(int situacao_agora, int player, int passos)
 
 void mapa()			//Ainda estou com muitas duvida sobre como  utilizar vetores e matrizes
 {	
-	int linhas=12,colunas=12,i=0,j=0;
+	int linhas=12,colunas=12, countELEMENT;
 	char mapa1[linhas][colunas]	// Modelo do labirito a ser percorrido, os caracteres 'X' serao as paredes que noa poderao ser atravessadas
 /*	
 	[i][j]
@@ -92,55 +93,31 @@ void mapa()			//Ainda estou com muitas duvida sobre como  utilizar vetores e mat
 	*/
 	{
     {'X','X','X','X','X','X','X','X','X','X','X','X'},
-    {'X','*','*','*','*','*','*','*','*','*','*','*'},
-    {'X','*','*','*','*','*','*','*','*','*','*','*'},
-    {'X','*','*','*','*','*','*','*','*','*','*','*'},
-    {'X','*','*','*','*','*','*','*','*','*','*','*'},
-    {'X','*','*','*','*','*','*','*','*','*','*','*'},
-    {'X','*','*','*','*','*','*','*','*','*','*','*'},
-    {'X','*','*','*','*','*','*','*','*','*','*','*'},
-    {'X','*','*','*','*','*','*','*','*','*','*','*'},
-    {'X','*','*','*','*','*','*','*','*','*','*','*'},
-    {'X','*','*','*','*','*','*','*','*','*','*','*'},
+    {'X','*','*','*','*','*','*','*','*','*','*','X'},
+    {'X','*','*','*','*','*','*','*','*','*','*','X'},
+    {'X','*','*','*','*','*','*','*','*','*','*','X'},
+    {'X','*','*','*','*','*','*','*','*','*','*','X'},
+    {'X','*','*','*','*','*','*','*','*','*','*','X'},
+    {'X','*','*','*','*','*','*','*','*','*','*','X'},
+    {'X','*','*','*','*','*','*','*','*','*','*','X'},
+    {'X','*','*','*','*','*','*','*','*','*','*','X'},
+    {'X','*','*','*','*','*','*','*','*','*','*','X'},
+    {'X','*','*','*','*','*','*','*','*','*','*','X'},
     {'X','X','X','X','X','X','X','X','X','X','X','X'},
   };
-	//Laço for para mostrar todos os elementos da matriz
-	//INCOMPLETO
-	for(i=0;i<12;++i)
-	{
-    putchar('\t');
-		printf("%c ",mapa1[i][j]);
-	}
-  putchar('\n');
-	i=0;
-	for(j=0;j<12;++j)
-	{
-		printf("%c ",mapa1[i][j]);
-	}
-	j=0;
-	i=11;
-  for(j=0;j<12;++j)
-	{
-    putchar('\t');
-		printf("%c ",mapa1[i][j]);
-	}
-  putchar('\n');
-	j=11;
-	for(i=0;i<12;++i)
-	{
-    putchar('\t');
-		printf("%c ",mapa1[i][j]);
-	}
-	for(i=1;i<11;++i)
-	{
-    putchar('\t');
-		printf("%c ",mapa1[i][j]);
-	}
-  for(j=1;j<11;++j)
-  {
-    putchar('\t');
-    printf("%c ",mapa1[i][j]);
-  }
+		countELEMENT=0;
+		for(int i=0;i<linhas;i++)
+		{	
+			for(int j=0;j<colunas;j++)
+			{	
+				printf(" %c ",mapa1[i][j]);
+				countELEMENT++;
+			}
+			putchar('\n');
+		}
+		putchar('\n');
+	
+	printf("Foram impressos %d elementos\n",countELEMENT);
 	
 	
 	
