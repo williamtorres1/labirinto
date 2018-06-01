@@ -89,8 +89,7 @@ void mapa()			//Ainda estou com muitas duvida sobre como  utilizar vetores e mat
 	[9][0] [9][1] [9][2] [9][3] [9][4] [9][5] [9][6] [9][7] [9][8] [9][9] [9][10] [9][11]
 	[10][0] [10][1] [10][2] [10][3] [10][4] [10][5] [10][6] [10][7] [10][8] [10][9] [10][10] [10][11]
 	[11][0] [11][1] [11][2] [11][3] [11][4] [11][5] [11][6] [11][7] [11][8] [11][9] [11][10] [11][11]
-	
-	*/
+*/
 	{
     {'X','X','X','X','X','X','X','X','X','X','X','X'},
     {'X','*','*','*','*','*','*','*','*','*','*','X'},
@@ -104,37 +103,30 @@ void mapa()			//Ainda estou com muitas duvida sobre como  utilizar vetores e mat
     {'X','*','*','*','*','*','*','*','*','*','*','X'},
     {'X','*','*','*','*','*','*','*','*','*','*','X'},
     {'X','X','X','X','X','X','X','X','X','X','X','X'},
-  };
-		countELEMENT=0;
-		for(int i=0;i<linhas;i++)
+    };
+	countELEMENT=0;
+	for(int i=0;i<linhas;i++)
+	{	
+		for(int j=0;j<colunas;j++)
 		{	
-			for(int j=0;j<colunas;j++)
-			{	
-				printf(" %c ",mapa1[i][j]);
-				countELEMENT++;
-			}
-			putchar('\n');
+			printf("  %c  ",mapa1[i][j]);
+			countELEMENT++;
 		}
 		putchar('\n');
-	
+	}
+		putchar('\n');
 	printf("Foram impressos %d elementos\n",countELEMENT);
-	
-	
-	
 }
-
 
 void player1()
 {
 	
 }
 
-
 void player2()
 {
 	
 }
-
 
 void jogo()//Funcao principal do jogo
 {
@@ -145,11 +137,10 @@ void jogo()//Funcao principal do jogo
 		mensagens(1,0,0);
 		mapa();
 		mensagens(2,player,passos);
-		break;
+		break; //Break para o período de testes
 	}
 	while(1);
 }
-
 
 int main()
 {	
