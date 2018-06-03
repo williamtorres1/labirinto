@@ -25,6 +25,7 @@ void sorteio_distribuicao()
 	for(int trap=0;trap<=num_trap;trap++)
 	{	
 		//for()			laco para distribuir as traps
+		/*Uma Matriz para armazenar os elementos que estiverem contendo traps e armadilhas, para o outro não ficar em cima */
 	}
 	int num_tocha=0;
 	num_tocha=rand()%15;
@@ -37,7 +38,7 @@ void sorteio_distribuicao()
 //	for()Laco para distribuir o tesouro
 }
 
-void mensagens(int situacao_agora, int player, int passos)
+void mensagens(int situacao_agora, int player, int passos,int escolha_player)
 //situacao_agora == recebera um valor inteiro para determinar qual mensagem sera mostrada
 //player == int p/ identificar qual player || quantos passos serao dados e quantos restam
 {
@@ -67,13 +68,20 @@ void mensagens(int situacao_agora, int player, int passos)
 		{	printf("Player %d GANHOU!! PARABENSS",player);
 			break;
 		}
+		case 7:
+		{
+			printf("\nPlayer %d, onde deseja começar a jogar?\n");
+			printf("1)Canto superior \n2) Canto inferior?\n");
+			scanf("%d",&escolha_player);
+			break;
+		}
 	}
 }
 
 
-void mapa()			//Ainda estou com muitas duvida sobre como  utilizar vetores e matrizes
+void mapa(int escolha)			//Ainda estou com muitas duvida sobre como  utilizar vetores e matrizes
 {	
-	int linhas=12,colunas=12, countELEMENT;
+	int linhas=12,colunas=12;
 	char mapa1[linhas][colunas]	// Modelo do labirito a ser percorrido, os caracteres 'X' serao as paredes que noa poderao ser atravessadas
 /*	
 	[i][j]
@@ -92,59 +100,58 @@ void mapa()			//Ainda estou com muitas duvida sobre como  utilizar vetores e mat
 	
 	*/
 	{
-    {'X','X','X','X','X','X','X','X','X','X','X','X'},
-    {'X','*','*','*','*','*','*','*','*','*','*','X'},
-    {'X','*','*','*','*','*','*','*','*','*','*','X'},
-    {'X','*','*','*','*','*','*','*','*','*','*','X'},
-    {'X','*','*','*','*','*','*','*','*','*','*','X'},
-    {'X','*','*','*','*','*','*','*','*','*','*','X'},
-    {'X','*','*','*','*','*','*','*','*','*','*','X'},
-    {'X','*','*','*','*','*','*','*','*','*','*','X'},
-    {'X','*','*','*','*','*','*','*','*','*','*','X'},
-    {'X','*','*','*','*','*','*','*','*','*','*','X'},
-    {'X','*','*','*','*','*','*','*','*','*','*','X'},
-    {'X','X','X','X','X','X','X','X','X','X','X','X'},
+   	{'X','X','X','X','X','X','X','X','X','X','X','X'},
+	{'X','*','*','*','*','*','*','*','*','*','*','X'},
+	{'X','*','*','*','*','*','*','*','*','*','*','X'},
+	{'X','*','*','*','*','*','*','*','*','*','*','X'},
+	{'X','*','*','*','*','*','*','*','*','*','*','X'},
+	{'X','*','*','*','*','*','*','*','*','*','*','X'},
+	{'X','*','*','*','*','*','*','*','*','*','*','X'},
+	{'X','*','*','*','*','*','*','*','*','*','*','X'},
+	{'X','*','*','*','*','*','*','*','*','*','*','X'},
+	{'X','*','*','*','*','*','*','*','*','*','*','X'},
+	{'X','*','*','*','*','*','*','*','*','*','*','X'},
+	{'X','X','X','X','X','X','X','X','X','X','X','X'},
   };
-		countELEMENT=0;
-		for(int i=0;i<linhas;i++)
+	for(int i=0;i<linhas;i++)
+	{	
+		for(int j=0;j<colunas;j++)
 		{	
-			for(int j=0;j<colunas;j++)
-			{	
-				printf(" %c ",mapa1[i][j]);
-				countELEMENT++;
-			}
-			putchar('\n');
+			printf(" %c ",mapa1[i][j]);
 		}
 		putchar('\n');
-	
-	printf("Foram impressos %d elementos\n",countELEMENT);
-	
-	
-	
+	}
+	if(escolha==1)
+		mapa1[1][1]='<>';
+	else mapa1[10][1]='<>';
+	if(escolha==1);
+		mapa1[1][10]='<>';
+	else mapa1[10][10]='<>';
 }
-
 
 void player1()
 {
 	
 }
 
-
 void player2()
 {
 	
 }
 
-
 void jogo()//Funcao principal do jogo
 {
-	int passos,player;
+	int passos,player=1,escolha1,escolha2;
 	do
 	{
 		sorteio_passos(&passos);
-		mensagens(1,0,0);
+		mensagens(1,0,0,0);
 		mapa();
-		mensagens(2,player,passos);
+		mensagens(2,player,passos,0);
+		mensagens(7,player,0,&escolha1);
+		mapa(&escolha1);
+		mensagens(7,player,0),&escolha2);
+		mensagens(7,player,0,&escolha2);
 		break;
 	}
 	while(1);
