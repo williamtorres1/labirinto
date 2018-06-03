@@ -121,12 +121,13 @@ void mapa(int escolha)			//Ainda estou com muitas duvida sobre como  utilizar ve
 		}
 		putchar('\n');
 	}
-	if(escolha==1)
+/*	if(escolha==1)
 		mapa1[1][1]='<>';
 	else mapa1[10][1]='<>';
 	if(escolha==1);
 		mapa1[1][10]='<>';
 	else mapa1[10][10]='<>';
+*/
 }
 
 void player1()
