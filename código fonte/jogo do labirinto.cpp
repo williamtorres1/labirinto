@@ -6,7 +6,7 @@
 ******************************/
 
 #include <stdio.h>//Biblioteca p/ printf e putchar
-#include <stdlib.h>//Biblioteca necessária para gerar numeros aleatorios (passos e distribuicaoo das armadilhas, tochas e o tesouro
+#include <stdlib.h>//Biblioteca necessï¿½ria para gerar numeros aleatorios (passos e distribuicaoo das armadilhas, tochas e o tesouro
 #include <conio.h>//Biblioteca para ler as teclas digitadas pelo usuario, com proposito de faze-lo percorrer o mapa(matriz)
 #include <time.h>//Biblioteca para complementacao da funcao srand()
 #include <windows.h>//sleep
@@ -29,7 +29,11 @@ void sorteio_distribuicao(int mapa[12][12],int linhas, int colunas)
 				{
 					for(int j=1;j<11;j++)
 					{
-						
+						int where_trap=0;
+						where_trap=rand()%101;
+						if(where_trap<=25)
+						mapa[i][j]=2;
+						else j++;
 					}
 				}
 		}
