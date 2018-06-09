@@ -19,7 +19,7 @@ void sorteio_passos(int *Passos)//Funcao para calcular quantos passos poderao se
 void mapa()
 {
     int trap=0,num_trap=0,where_trap=0;
-	int mapa1[12][12]	// Modelo do labirito a ser percorrido, os caracteres 0 serao as paredes que nao poderao ser atravessadas
+	int mapa1[12][12]	= // Modelo do labirito a ser percorrido, os caracteres 0 serao as paredes que nao poderao ser atravessadas
 	/*
     [i][j]
 	[0][0] [0][1] [0][2] [0][3] [0][4] [0][5] [0][6] [0][7] [0][8] [0][9] [0][10] [0][11]
@@ -49,10 +49,12 @@ void mapa()
     {0,1,1,1,1,1,1,1,1,1,1,0},
     {0,0,0,0,0,0,0,0,0,0,0,0},
     };
-    num_trap=rand()%32;
+	do{
+	    num_trap=rand()%32;
+	}while(num_trap > 9);
     printf("\nForam sorteadas %d armadilhas\n\n",num_trap);
-        for(int i=2;i<10;i++)
-            trap=0;
+        for(int i=2;i<10;i++){
+			trap=0;
             for(int j=1;j<11;j++)
             {
                 if(trap<num_trap)
@@ -65,6 +67,7 @@ void mapa()
                     mapa1[i][j]=1;
                 }
             }
+		}
     for(int i=0;i<12;i++)
 		{
 		    for(int j=0;j<12;j++)
@@ -134,7 +137,7 @@ void jogo()//Funcao principal do jogo
 }
 int main()
 {
-	srand('5');
+	srand(time(NULL));
 	jogo();
 	putchar('\n');
 	system("pause");
