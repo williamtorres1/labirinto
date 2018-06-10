@@ -14,7 +14,6 @@ void sorteio_passos(int *Passos)//Funcao para calcular quantos passos poderao se
 	*Passos=3+rand()%11;	//esta funcao sera substituida por srand(time(NULL)), para sempre ter numeros aleatorios a cada execucao
 							//mas para saber se o jogo esta funcionando, iremos trabalhar com valores constantes
 }
-
 void mapa()
 {
     int trap=0,num_trap=0,where_trap=0;
@@ -51,9 +50,7 @@ void mapa()
 	[11][0] [11][1] [11][2] [11][3] [11][4] [11][5] [11][6] [11][7] [11][8] [11][9] [11][10] [11][11]
 */
     };
-
     //ARMADILHAS
-
     do      //laco para o numero de armadilhas nao passar de 32
     {
         num_trap=rand()%32;
@@ -73,7 +70,6 @@ void mapa()
                 }
             }
     //TOCHAS
-
     do      //laco para o numero de armadilhas nao passar de 32
     {
         num_tocha=rand()%5;
@@ -122,7 +118,7 @@ void mapa()
             if(mapa1[i][j]==0)
                 printf(" XX ");
             if(mapa1[i][j]==1||mapa1[i][j]==2||mapa1[i][j]==3||mapa1[i][j]==4)
-                printf(" %d  ",mapa1[i][j]);
+                printf(" -- ",mapa1[i][j]);
             else if(mapa1[i][j]!=1||mapa1[i][j]!=2||mapa1[i][j]!=3||mapa1[i][j]!=4)
                 mapa1[i][j]=1;
         }
