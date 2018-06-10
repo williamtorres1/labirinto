@@ -1,9 +1,9 @@
 /******************************
-*	File:Saturn Project	      *
-*	Author: William Torres    *
-*							  *
-*							  *
-******************************/
+*	File:Saturn Project	       *
+*	Author: William Torres     *
+*	Author: Angelo Dangelo	   *
+*	Author:Guilherme Vinicius  *
+****************************** */
 #include <stdio.h>//Biblioteca p/ printf e putchar
 #include <stdlib.h>//Biblioteca necessaria para gerar numeros aleatorios (passos e distribuicaoo das armadilhas, tochas e o tesouro
 #include <conio.h>//Biblioteca para ler as teclas digitadas pelo usuario, com proposito de faze-lo percorrer o mapa(matriz)
@@ -18,6 +18,8 @@ void sorteio_passos(int *Passos)//Funcao para calcular quantos passos poderao se
 void mapa()
 {
     int trap=0,num_trap=0,where_trap=0;
+    int tochas=0,num_tocha=0,where_tocha=0;
+    int ouro=0,where_ouro=0;
     int linhas=12,colunas=12;
 	int mapa1[linhas][colunas]
 	{
@@ -33,8 +35,8 @@ void mapa()
     {0,1,1,1,1,1,1,1,1,1,1,0},
     {0,1,1,1,1,1,1,1,1,1,1,0},
     {0,0,0,0,0,0,0,0,0,0,0,0},
-    };
-/*  [i][j]
+    /*
+    [i][j]
 	[0][0] [0][1] [0][2] [0][3] [0][4] [0][5] [0][6] [0][7] [0][8] [0][9] [0][10] [0][11]
 	[1][0] [1][1] [1][2] [1][3] [1][4] [1][5] [1][6] [1][7] [1][8] [1][9] [1][10] [1][11]
 	[2][0] [2][1] [2][2] [2][3] [2][4] [2][5] [2][6] [2][7] [2][8] [2][9] [2][10] [2][11]
@@ -48,11 +50,14 @@ void mapa()
 	[10][0] [10][1] [10][2] [10][3] [10][4] [10][5] [10][6] [10][7] [10][8] [10][9] [10][10] [10][11]
 	[11][0] [11][1] [11][2] [11][3] [11][4] [11][5] [11][6] [11][7] [11][8] [11][9] [11][10] [11][11]
 */
+    };
+
+    //ARMADILHAS
+
     do      //laco para o numero de armadilhas nao passar de 32
     {
         num_trap=rand()%32;
 	}while(num_trap>32);
-
     for(trap=0;trap<num_trap;trap++)    //laco para distribuir as armadilhas, sem ultrapassar o numero sorteado
         for(int i=2;i<10;i++)
             for(int j=1;j<11;j++)
@@ -65,6 +70,48 @@ void mapa()
                 {
                     mapa1[i][j]=2;
                     trap++;
+                }
+            }
+    //TOCHAS
+
+    do      //laco para o numero de armadilhas nao passar de 32
+    {
+        num_tocha=rand()%5;
+	}while(num_tocha>5);
+
+    for(tochas=0;tochas<num_tocha;tochas++)    //laco para distribuir as armadilhas, sem ultrapassar o numero sorteado
+        for(int i=2;i<10;i++)
+            for(int j=1;j<11;j++)
+            {
+                do      //laco para sortear a chance de cair uma armadilha numa trap, nao podendo exceder 100
+                {
+                    where_tocha=rand()%100;
+                }while(where_tocha>100);
+                if(where_tocha<=15 && tochas<num_tocha && mapa1[i][j]!=2)
+                {
+                    mapa1[i][j]=3;
+                    tochas++;
+                }
+            }
+    //OURO
+    for(int i=2;i<10;i++)
+        for(int j=1;j<11;j++)
+            while(ouro<1)
+            {
+                do
+                {
+                    where_ouro=rand()%100;
+                }while(where_ouro>100);
+                if(where_ouro<=2)
+                {
+                    if(mapa1[i][j]==2 || mapa1[i][j]==3)
+                    {
+                        j++;
+                        mapa1[i][j]=4;
+                        ouro++;
+                    }
+                    else mapa1[i][j]=4;
+                    ouro++;
                 }
             }
 
