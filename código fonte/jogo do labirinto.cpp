@@ -1,4 +1,4 @@
-/******************************
+/*******************************
 *	File:Saturn Project	       *
 *	Author: William Torres     *
 *	Author: Angelo Dangelo	   *
@@ -16,10 +16,12 @@ void sorteio_passos(int *Passos)//Funcao para calcular quantos passos poderao se
 }
 void mapa()
 {
-    int trap=0,num_trap=0,where_trap=0;
-    int tochas=0,num_tocha=0,where_tocha=0;
-    int ouro=0,where_ouro=0;
-    int linhas=12,colunas=12;
+    int trap=0,num_trap=0,where_trap=0;//trap = armadilhas, num_trap = numero de armadilhas
+                                       //where_trap = chance de conter uma armadilha naquele elemento da matriz [i][j]
+    int tochas=0,num_tocha=0,where_tocha=0;//mesma logica das armadilhas
+    int ouro=0,where_ouro=0;//ouro = tesouro
+                            //mesma lógica das armadilhas, mas podendo conter somente um ouro no mapa, e PRECISA TER UM tesouro
+    int linhas=12,colunas=12;//numero de linhas e colunas da matriz
 	int mapa1[linhas][colunas]
 	{
     {0,0,0,0,0,0,0,0,0,0,0,0},
@@ -55,14 +57,15 @@ void mapa()
     {
         num_trap=rand()%32;
 	}while(num_trap>32);
+	printf(" \nTerao %d Armadilhas\n",num_trap);//printf p/ poder contar no mapa se as armadilhas estao funcionando
     for(trap=0;trap<num_trap;trap++)    //laco para distribuir as armadilhas, sem ultrapassar o numero sorteado
         for(int i=2;i<10;i++)
             for(int j=1;j<11;j++)
             {
                 do      //laco para sortear a chance de cair uma armadilha numa trap, nao podendo exceder 100
                 {
-                    where_trap=rand()%100;
-                }while(where_trap>100);
+                    where_trap=rand()%101;
+                }while(where_trap>101);
                 if(where_trap<=25 && trap<num_trap)
                 {
                     mapa1[i][j]=2;
@@ -74,43 +77,46 @@ void mapa()
     {
         num_tocha=rand()%5;
 	}while(num_tocha>5);
-
-    for(tochas=0;tochas<num_tocha;tochas++)    //laco para distribuir as armadilhas, sem ultrapassar o numero sorteado
+	printf(" \nTerao %d Tochas\n",num_tocha);
+    do    //laco para distribuir as armadilhas, sem ultrapassar o numero sorteado
+    {
         for(int i=2;i<10;i++)
             for(int j=1;j<11;j++)
             {
                 do      //laco para sortear a chance de cair uma armadilha numa trap, nao podendo exceder 100
                 {
-                    where_tocha=rand()%100;
-                }while(where_tocha>100);
+                    where_tocha=rand()%101;
+                }while(where_tocha>101);
                 if(where_tocha<=15 && tochas<num_tocha && mapa1[i][j]!=2)
                 {
                     mapa1[i][j]=3;
                     tochas++;
                 }
             }
-    //OURO
-    for(int i=2;i<10;i++)
-        for(int j=1;j<11;j++)
-            while(ouro<1)
-            {
-                do
-                {
-                    where_ouro=rand()%100;
-                }while(where_ouro>100);
-                if(where_ouro<=2)
-                {
-                    if(mapa1[i][j]==2 || mapa1[i][j]==3)
-                    {
-                        j++;
-                        mapa1[i][j]=4;
-                        ouro++;
-                    }
-                    else mapa1[i][j]=4;
-                    ouro++;
-                }
-            }
+    }while(tochas<num_tocha);
 
+    //OURO
+    do
+    {
+		for(int i=2;i<10;i++)
+        	for(int j=1;j<11;j++)
+        		{
+				do
+                {
+                    where_ouro=rand()%101;
+                }while(where_ouro>101);
+                if(ouro<1)
+                    if(where_ouro<=2)
+                    {
+                        if(mapa1[i][j]==1)
+                            {
+                                mapa1[i][j]=4;
+                                ouro++;
+                            }
+                    }
+                    else break;
+                }
+	}while(ouro<1);
     for(int i=0;i<12;i++)
     {
         for(int j=0;j<12;j++)
@@ -118,7 +124,7 @@ void mapa()
             if(mapa1[i][j]==0)
                 printf(" XX ");
             if(mapa1[i][j]==1||mapa1[i][j]==2||mapa1[i][j]==3||mapa1[i][j]==4)
-                printf(" -- ",mapa1[i][j]);
+                printf(" %d  ",mapa1[i][j]);
             else if(mapa1[i][j]!=1||mapa1[i][j]!=2||mapa1[i][j]!=3||mapa1[i][j]!=4)
                 mapa1[i][j]=1;
         }
@@ -180,6 +186,7 @@ void jogo()//Funcao principal do jogo
 }
 int main()
 {
+    srand(time(NULL));
 	jogo();
 	putchar('\n');
 	system("pause");
