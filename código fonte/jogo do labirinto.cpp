@@ -2,7 +2,7 @@
 *	File:Saturn Project	       *
 *	Author: William Torres     *
 *	Author: Angelo Dangelo	   *
-*	Author:Guilherme Vinicius  *
+*	Author: Guilherme Vinicius *
 ****************************** */
 #include <stdio.h>//Biblioteca p/ printf e putchar
 #include <stdlib.h>//Biblioteca necessaria para gerar numeros aleatorios (passos e distribuicaoo das armadilhas, tochas e o tesouro
@@ -107,14 +107,11 @@ void mapa()
                 }while(where_ouro>101);
                 if(ouro<1)
                     if(where_ouro<=2)
-                    {
                         if(mapa1[i][j]==1)
                             {
                                 mapa1[i][j]=4;
                                 ouro++;
                             }
-                    }
-                    else break;
                 }
 	}while(ouro<1);
     for(int i=0;i<12;i++)
