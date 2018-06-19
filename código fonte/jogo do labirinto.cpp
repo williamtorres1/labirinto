@@ -1,5 +1,5 @@
 /*******************************
-*	File:Saturn Project	       *
+*	File:   Saturn Project	   *
 *	Author: William Torres     *
 *	Author: Angelo Dangelo	   *
 *	Author: Guilherme Vinicius *
@@ -9,10 +9,12 @@
 #include <conio.h>//Biblioteca para ler as teclas digitadas pelo usuario, com proposito de faze-lo percorrer o mapa(matriz)
 #include <time.h>//Biblioteca para complementacao da funcao srand()
 #include <windows.h>//sleep
-void sorteio_passos(int *Passos)//Funcao para calcular quantos passos poderao ser realizados pelos jogadores
+void sorteio_passos(int *passos)//Funcao para calcular quantos passos poderao ser realizados pelos jogadores
 {
-	*Passos=3+rand()%11;	//esta funcao sera substituida por srand(time(NULL)), para sempre ter numeros aleatorios a cada execucao
-							//mas para saber se o jogo esta funcionando, iremos trabalhar com valores constantes
+    do
+    {
+	*passos=3+rand()%11;
+	}while(*passos>10 || *passos <3);
 }
 void mapa()
 {
@@ -20,7 +22,7 @@ void mapa()
                                        //where_trap = chance de conter uma armadilha naquele elemento da matriz [i][j]
     int tochas=0,num_tocha=0,where_tocha=0;//mesma logica das armadilhas
     int ouro=0,where_ouro=0;//ouro = tesouro
-                            //mesma lógica das armadilhas, mas podendo conter somente um ouro no mapa, e PRECISA TER UM tesouro
+                            //mesma lÃ³gica das armadilhas, mas podendo conter somente um ouro no mapa, e PRECISA TER UM tesouro
     int linhas=12,colunas=12;//numero de linhas e colunas da matriz
 	int mapa1[linhas][colunas]
 	{
@@ -57,7 +59,7 @@ void mapa()
     {
         num_trap=rand()%32;
 	}while(num_trap>32);
-	printf(" \nTerao %d Armadilhas\n",num_trap);//printf p/ poder contar no mapa se as armadilhas estao funcionando
+	printf(" \nTerao %d Armadilhas",num_trap);//printf p/ poder contar no mapa se as armadilhas estao funcionando
     for(trap=0;trap<num_trap;trap++)    //laco para distribuir as armadilhas, sem ultrapassar o numero sorteado
         for(int i=2;i<10;i++)
             for(int j=1;j<11;j++)
@@ -77,7 +79,7 @@ void mapa()
     {
         num_tocha=rand()%5;
 	}while(num_tocha>5);
-	printf(" \nTerao %d Tochas\n",num_tocha);
+	printf(" \nTerao %d Tochas\n\n",num_tocha);
     do    //laco para distribuir as armadilhas, sem ultrapassar o numero sorteado
     {
         for(int i=2;i<10;i++)
@@ -114,27 +116,86 @@ void mapa()
                             }
                 }
 	}while(ouro<1);
+  mapa1[1][1]=5;
+  mapa1[1][10]=6;
     for(int i=0;i<12;i++)
     {
         for(int j=0;j<12;j++)
         {
+            if(i == 5 && j == 1 )
+            {
+                printf("            luto XXXTENTACION            XX");
+                j++;
+                if(mapa1[i][j]==0)
+                    printf("");
+                break;
+            }
             if(mapa1[i][j]==0)
                 printf(" XX ");
             if(mapa1[i][j]==1||mapa1[i][j]==2||mapa1[i][j]==3||mapa1[i][j]==4)
-                printf(" %d  ",mapa1[i][j]);
-            else if(mapa1[i][j]!=1||mapa1[i][j]!=2||mapa1[i][j]!=3||mapa1[i][j]!=4)
+                printf(" -- ");
+            if(mapa1[i][j]==5)
+              printf(" P1 ");
+            if(mapa1[i][j]==6)
+              printf(" P2 ");
+            else if(mapa1[i][j]!=1||mapa1[i][j]!=2||mapa1[i][j]!=3||mapa1[i][j]!=4||mapa1[i][j]!=5||mapa1[i][j]!=6)
                 mapa1[i][j]=1;
+
         }
         putchar('\n');
     }
 }
-void player1()
+/*void movimentacao(int *passos,int player,int *mapa1)
 {
+    char tecla1=0;
+    int tecla2=0,passos_andados=0,i=1,j=1;
+    do
+    {
+        do
+        {
+            if(player==1)
+                {
+                    tecla1=getch();
+                    if(tecla1=='w' || tecla1 == 'W')
+                        i++;
+                    if(tecla1 == 'A' || tecla1 == 'a');
+                        j--;
+                    if(tecla1 == 's' || tecla1 == 'S')
+                        {
+                            i--;
+                            if(mapa1[i][j] == 0)
 
+                        }
+                    if(tecla1 == 'd' || tecla1 == 'D')
+                        j++;
+                }
+            if(player==2)
+                {
+                    tecla2=getch();
+                    if(tecla1=='w' || tecla1 == 'W')
+                        i++;
+                    if(tecla1 == 'A' || tecla1 == 'a');
+                        j--;
+                    if(tecla1 == 's' || tecla1 == 'S')
+                        i--;
+                    if(tecla1 == 'd' || tecla1 == 'D')
+                        j++;
+                }
+        }while( tecla1 !='w'||'W' && tecla1 != 'a'|| tecla1 != 'A' && tecla1 != 's'|| tecla1 != 'S' && tecla1 != 'd'|| tecla1 != 'D' &&
+        tecla2 !=8 && tecla2 != 4 && tecla2 != 5 && tecla2 != 6);
+
+    }while(passos_andados < *passos);
+    printf("digite uma tecla: ");
+    scanf("%c",&tecla1);
+
+}*/
+void player1(int *passos)
+{
+//    movimentacao(&passos,1,&mapa1);
 }
-void player2()
+void player2(int *passos)
 {
-
+    //movimentacao(&passos,2);
 }
 void mensagens(int situacao_agora, int player, int passos)
 //situacao_agora == recebera um valor inteiro para determinar qual mensagem sera mostrada
@@ -177,13 +238,15 @@ void jogo()//Funcao principal do jogo
 		mensagens(1,0,0);
 		mapa();
 		mensagens(2,player,passos);
+		player1(&passos);
 		break;
 	}
 	while(1);
 }
 int main()
 {
-    srand(time(NULL));
+    //srand(time(NULL));//esta funcao sera substituida por srand(time(NULL)), para sempre ter numeros aleatorios a cada execucao
+                      //mas para saber se o jogo esta funcionando, iremos trabalhar com valores constantes
 	jogo();
 	putchar('\n');
 	system("pause");
