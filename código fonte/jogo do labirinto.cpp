@@ -16,6 +16,63 @@ void sorteio_passos(int *passos)//Funcao para calcular quantos passos poderao se
 	*passos=3+rand()%11;
 	}while(*passos>10 || *passos <3);
 }
+void mensagens(int situacao_agora, int player, int passos)
+//situacao_agora == recebera um valor inteiro para determinar qual mensagem sera mostrada
+//player == int p/ identificar qual player || quantos passos serao dados e quantos restam
+{
+	switch(situacao_agora)
+	{
+		case 1:
+		{	printf("\t\t\tBem-vindo a caca ao Tesouro!\n\n\n");
+			break;
+		}
+		case 2:
+		{	printf("Player %d pode dar: %d passos",player,passos);
+			break;
+		}
+		case 3:
+		{	printf("Player %d encontrou uma tocha!",player);
+			break;
+		}
+		case 4:
+		{	printf("Player %d perdeu 1 Health Point",player);
+			break;
+		}
+		case 5:
+		{	printf("Player %d encontrou o tesouro!",player);
+			break;
+		}
+		case 6:
+		{	printf("Player %d GANHOU!! PARABENSS",player);
+			break;
+		}
+	}
+}
+void desenhar_mapa(int mapa1[12][12],int linhas, int cols)
+{
+    system("cls");
+    mensagens(1,0,0);
+    mapa1[1][1]=5;
+    mapa1[1][10]=6;
+    for(int i=0;i<linhas;i++)
+    {
+        for(int j=0;j<cols;j++)
+        {
+            if(mapa1[i][j]==0)
+                printf(" XX ");
+            if(mapa1[i][j]==1||mapa1[i][j]==2||mapa1[i][j]==3||mapa1[i][j]==4)
+                printf(" ** ");
+            if(mapa1[i][j]==5)
+              printf(" P1 ");
+            if(mapa1[i][j]==6)
+              printf(" P2 ");
+            if(mapa1[i][j]!=1||mapa1[i][j]!=2||mapa1[i][j]!=3||mapa1[i][j]!=4||mapa1[i][j]!=5||mapa1[i][j]!=6)
+              mapa1[i][j]=1;
+
+        }
+        putchar('\n');
+    }
+}
 void mapa()
 {
     int trap=0,num_trap=0,where_trap=0;//trap = armadilhas, num_trap = numero de armadilhas
@@ -23,8 +80,7 @@ void mapa()
     int tochas=0,num_tocha=0,where_tocha=0;//mesma logica das armadilhas
     int ouro=0,where_ouro=0;//ouro = tesouro
                             //mesma lógica das armadilhas, mas podendo conter somente um ouro no mapa, e PRECISA TER UM tesouro
-    int linhas=12,colunas=12;//numero de linhas e colunas da matriz
-	int mapa1[linhas][colunas]
+	int mapa1[12][12]//numero de linhas e colunas da matriz
 	{
     {0,0,0,0,0,0,0,0,0,0,0,0},
     {0,1,1,1,1,1,1,1,1,1,1,0},
@@ -116,36 +172,35 @@ void mapa()
                             }
                 }
 	}while(ouro<1);
-  mapa1[1][1]=5;
-  mapa1[1][10]=6;
-    for(int i=0;i<12;i++)
+	desenhar_mapa(mapa1,12,12);
+}
+void verificacao1(int player, char *tecla)
+{
+    if(player==1)
     {
-        for(int j=0;j<12;j++)
+        if(*tecla!='w'||*tecla!='W'&&*tecla!='a'||*tecla!='A'&&*tecla!='s'||*tecla!='S'&&*tecla!='d'||*tecla!='D')
         {
-            if(i == 5 && j == 1 )
+            do
             {
-                printf("            luto XXXTENTACION            XX");
-                j++;
-                if(mapa1[i][j]==0)
-                    printf("");
-                break;
-            }
-            if(mapa1[i][j]==0)
-                printf(" XX ");
-            if(mapa1[i][j]==1||mapa1[i][j]==2||mapa1[i][j]==3||mapa1[i][j]==4)
-                printf(" -- ");
-            if(mapa1[i][j]==5)
-              printf(" P1 ");
-            if(mapa1[i][j]==6)
-              printf(" P2 ");
-            else if(mapa1[i][j]!=1||mapa1[i][j]!=2||mapa1[i][j]!=3||mapa1[i][j]!=4||mapa1[i][j]!=5||mapa1[i][j]!=6)
-                mapa1[i][j]=1;
-
+                *tecla=getch();
+            }while(*tecla!='w'||*tecla!='W'&&*tecla!='a'||*tecla!='A'&&*tecla!='s'||*tecla!='S'&&*tecla!='d'||*tecla!='D');
         }
-        putchar('\n');
     }
 }
-/*void movimentacao(int *passos,int player,int *mapa1)
+void verificacao2(int player, int *tecla)
+{
+    if(player==2)
+    {
+        if(*tecla!=8&&*tecla!=4&&*tecla!=5&&*tecla!=6)
+        {
+            do
+            {
+                *tecla=getch();
+            }while(*tecla!=8&&*tecla!=4&&*tecla!=5&&*tecla!=6);
+        }
+    }
+}
+void movimentacao(int *passos,int player,int **mapa1)
 {
     char tecla1=0;
     int tecla2=0,passos_andados=0,i=1,j=1;
@@ -156,14 +211,17 @@ void mapa()
             if(player==1)
                 {
                     tecla1=getch();
+                    verificacao1(player,&tecla1);
                     if(tecla1=='w' || tecla1 == 'W')
-                        i++;
-                    if(tecla1 == 'A' || tecla1 == 'a');
+                    {
+                    //  i++;
+                    }
+                    if(tecla1 == 'A' || tecla1 == 'a')
                         j--;
                     if(tecla1 == 's' || tecla1 == 'S')
                         {
                             i--;
-                            if(mapa1[i][j] == 0)
+                          //  if(mapa1[i][j] == 0)
 
                         }
                     if(tecla1 == 'd' || tecla1 == 'D')
@@ -172,62 +230,27 @@ void mapa()
             if(player==2)
                 {
                     tecla2=getch();
-                    if(tecla1=='w' || tecla1 == 'W')
+                    verificacao2(player,&tecla2);
+                    if(tecla2 == 8 /* || tecla1 == */)
                         i++;
-                    if(tecla1 == 'A' || tecla1 == 'a');
+                    if(tecla2 == 4 /* || tecla2 ==*/);
                         j--;
-                    if(tecla1 == 's' || tecla1 == 'S')
+                    if(tecla2 == 5 /* || tecla2 == */)
                         i--;
-                    if(tecla1 == 'd' || tecla1 == 'D')
+                    if(tecla2 == 6 /*|| tecla2== */)
                         j++;
                 }
-        }while( tecla1 !='w'||'W' && tecla1 != 'a'|| tecla1 != 'A' && tecla1 != 's'|| tecla1 != 'S' && tecla1 != 'd'|| tecla1 != 'D' &&
+        }while( tecla1 !='w'||tecla1 != 'W' && tecla1 != 'a'|| tecla1 != 'A' && tecla1 != 's'|| tecla1 != 'S' && tecla1 != 'd'|| tecla1 != 'D' &&
         tecla2 !=8 && tecla2 != 4 && tecla2 != 5 && tecla2 != 6);
 
     }while(passos_andados < *passos);
-    printf("digite uma tecla: ");
-    scanf("%c",&tecla1);
-
-}*/
+}
 void player1(int *passos)
 {
-//    movimentacao(&passos,1,&mapa1);
 }
 void player2(int *passos)
 {
     //movimentacao(&passos,2);
-}
-void mensagens(int situacao_agora, int player, int passos)
-//situacao_agora == recebera um valor inteiro para determinar qual mensagem sera mostrada
-//player == int p/ identificar qual player || quantos passos serao dados e quantos restam
-{
-	switch(situacao_agora)
-	{
-		case 1:
-		{	printf("\t\t\tBem-vindo a caca ao Tesouro!\n\n\n");
-			break;
-		}
-		case 2:
-		{	printf("Player %d pode dar: %d passos",player,passos);
-			break;
-		}
-		case 3:
-		{	printf("Player %d encontrou uma tocha!",player);
-			break;
-		}
-		case 4:
-		{	printf("Player %d perdeu 1 Health Point",player);
-			break;
-		}
-		case 5:
-		{	printf("Player %d encontrou o tesouro!",player);
-			break;
-		}
-		case 6:
-		{	printf("Player %d GANHOU!! PARABENSS",player);
-			break;
-		}
-	}
 }
 void jogo()//Funcao principal do jogo
 {
@@ -235,17 +258,16 @@ void jogo()//Funcao principal do jogo
 	do
 	{
 		sorteio_passos(&passos);
-		mensagens(1,0,0);
 		mapa();
 		mensagens(2,player,passos);
-		player1(&passos);
+		//player1(&passos,mapa1);
 		break;
 	}
 	while(1);
 }
 int main()
 {
-    //srand(time(NULL));//esta funcao sera substituida por srand(time(NULL)), para sempre ter numeros aleatorios a cada execucao
+   // srand(time(NULL));//esta funcao sera substituida por srand(time(NULL)), para sempre ter numeros aleatorios a cada execucao
                       //mas para saber se o jogo esta funcionando, iremos trabalhar com valores constantes
 	jogo();
 	putchar('\n');
