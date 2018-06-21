@@ -66,6 +66,8 @@ void desenhar_mapa(int mapa1[12][12],int linhas, int cols)
               printf(" P1 ");
             if(mapa1[i][j]==6)
               printf(" P2 ");
+            if(mapa1[i][j]==7)
+              printf("  ");
             if(mapa1[i][j]!=1||mapa1[i][j]!=2||mapa1[i][j]!=3||mapa1[i][j]!=4||mapa1[i][j]!=5||mapa1[i][j]!=6)
               mapa1[i][j]=1;
 
@@ -203,7 +205,7 @@ void verificacao2(int player, int *tecla)
 void movimentacao(int *passos,int player,int **mapa1)
 {
     char tecla1=0;
-    int tecla2=0,passos_andados=0,i=1,j=1;
+    int tecla2=0,passos_andados=0,x=1,y=1,i=0,j=0;
     do
     {
         do
@@ -214,7 +216,9 @@ void movimentacao(int *passos,int player,int **mapa1)
                     verificacao1(player,&tecla1);
                     if(tecla1=='w' || tecla1 == 'W')
                     {
-                    //  i++;
+                        x--;
+                        mapa1[x][y] = 5;
+                        mapa1[x+1][y] = 7;
                     }
                     if(tecla1 == 'A' || tecla1 == 'a')
                         j--;
@@ -247,6 +251,7 @@ void movimentacao(int *passos,int player,int **mapa1)
 }
 void player1(int *passos)
 {
+    movimentacao()
 }
 void player2(int *passos)
 {
@@ -260,7 +265,7 @@ void jogo()//Funcao principal do jogo
 		sorteio_passos(&passos);
 		mapa();
 		mensagens(2,player,passos);
-		//player1(&passos,mapa1);
+		player1(&passos);
 		break;
 	}
 	while(1);
