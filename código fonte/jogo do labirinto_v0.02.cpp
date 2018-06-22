@@ -41,8 +41,6 @@ void show_map(int mapa2[12][12])
 {
 	system("cls");
 	system("color b");
-    mapa2[1][1]=5;
-    mapa2[1][10]=6;
     messages(1,0);
     for(int i=0;i<12;i++)
     {
@@ -61,7 +59,7 @@ void show_map(int mapa2[12][12])
             if(mapa2[i][j]==8)
                 printf(" || ");
             if(mapa2[i][j]==9)
-                printf(" <  >");
+                printf(" <> ");
         }
         putchar('\n');
     }
@@ -150,13 +148,14 @@ void distribuicao(int mapa1[][12])
                     }
                 }
 	}while(ouro<1);
+    mapa1[1][1]=5;
+    mapa1[1][10]=6;
 }
-void movimentacao1(int mapa1[][12])
+void movimentacao1(int *x,int *y,int mapa1[][12])
 {
+    //*x, *y  Essa variáveis são as coordenadas do player e seram de estrema importância para a movimentação.
     char tecla1=0; // Essa variável irá receber os valores w,a,s,d para controlar os player
-	int x = 1, y = 1; // Essa variáveis são as coordenadas do player e seram de estrema importância para a movimentação.
-    int passos=0;
-    int passos_andados=0;
+    int passos=0,passos_andados=0;
     sorteio_passos(&passos);
     printf("Player 1 pode dar %d passos\n",passos);
     while(passos>passos_andados)
@@ -169,9 +168,9 @@ void movimentacao1(int mapa1[][12])
             */
                 if(tecla1 == 'w' || tecla1 == 'W')
             {
-                x--;
-                mapa1[x][y] = 5;
-                mapa1[x+1][y] = 7;
+                (*x)--;
+                mapa1[(*x)][(*y)] = 5;
+                mapa1[((*x)+1)][(*y)] = 7;
             }// fim do if cima
 
 		/* Já esse é o if para descer, seguindo a mesma lógica do anterior porém agora
@@ -179,9 +178,9 @@ void movimentacao1(int mapa1[][12])
 		 */
             if(tecla1 == 's' || tecla1 == 'S')
             {
-                x++;
-                mapa1[x][y] = 5;
-                mapa1[x-1][y] = 7;
+                (*x)++;
+                mapa1[(*x)][(*y)] = 5;
+                mapa1[((*x)-1)][(*y)] = 7;
             }// fim do if baixo
 
 		/* Esse é o if para ir para a esquerda como está
@@ -189,17 +188,17 @@ void movimentacao1(int mapa1[][12])
 		 */
             if(tecla1 == 'a' || tecla1 == 'A')
             {
-                y--;
-                mapa1[x][y] = 5;
-                mapa1[x][y+1] = 7;
+                (*y)--;
+                mapa1[(*x)][(*y)] = 5;
+                mapa1[(*x)][((*y)+1)] = 7;
             }// fim do if esquerda
 
             /* Esse é o último if, aponta para a direita, apenas mexemos no y aumentando-o */
             if(tecla1 == 'd' || tecla1 == 'D')
             {
-                y++;
-                mapa1[x][y] = 5;
-                mapa1[x][y-1] = 7;
+                (*y)++;
+                mapa1[(*x)][(*y)] = 5;
+                mapa1[(*x)][(*y-1)] = 7;
             }
         passos--;
         mapa1[1][1] = 9;
@@ -207,56 +206,42 @@ void movimentacao1(int mapa1[][12])
         printf("Player 1 pode dar %d passos\n",passos);
         }
 }
-void movimentacao2(int mapa1[][12])
+void movimentacao2(int *x,int *y,int mapa1[][12])
 {
     int tecla1=0; // Essa variável irá receber os valores w,a,s,d para controlar os player
-	int x = 1, y = 10; // Essa variáveis são as coordenadas do player e seram de estrema importância para a movimentação.
+//	*x = 1, *y = 10; // Essa variáveis são as coordenadas do player e seram de estrema importância para a movimentação.
     int passos=0;
     sorteio_passos(&passos);
     printf("Player 2 pode dar %d passos\n",passos);
     int passos_andados=0;
     while(passos>passos_andados)
         {
-            scanf("%d",&tecla1); // Se lembra da variável que ia pegar w,a,s,d? pronto aqui é onde ela recebe o valor
-            /******Com o valor adquirido você terá 4 ifs diferentes 1 pra cada letra.******/
-            /* Esse é o if para cima, se queremos que o Player suba devemos mexer no x diminuindo,
-            * pode parecer confuso, ou n, vc ter que diminuir para subir, mas vai fazer sentido
-            */
-            //verificacao das teclas
+            tecla1=getch() - '0';
             if(tecla1 == 8)
             {
-                x--;
-                mapa1[x][y] = 6;
-                mapa1[x+1][y] = 7;
-                mapa1[1][10] = 9;
+                (*x)--;
+                mapa1[(*x)][(*y)] = 6;
+                mapa1[((*x)+1)][(*y)] = 7;
             }// fim do if cima
-
-		/* Já esse é o if para descer, seguindo a mesma lógica do anterior porém agora
-		 * aumentando o x
-		 */
             if(tecla1 == 5)
             {
-                x++;
-                mapa1[x][y] = 6;
-                mapa1[x-1][y] = 7;
+                (*x)++;
+                mapa1[(*x)][(*y)] = 6;
+                mapa1[((*x)-1)][(*y)] = 7;
             }// fim do if baixo
 
-		/* Esse é o if para ir para a esquerda como está
-		 * se deslocando na horizontal mexe-se no y, diminuindo
-		 */
             if(tecla1 == 4)
             {
-                y--;
-                mapa1[x][y] = 6;
-                mapa1[x][y+1] = 7;
+                (*y)--;
+                mapa1[(*x)][(*y)] = 6;
+                mapa1[(*x)][((*y)+1)] = 7;
             }// fim do if esquerda
 
-            /* Esse é o último if, aponta para a direita, apenas mexemos no y aumentando-o */
             if(tecla1 == 6)
             {
-                y++;
-                mapa1[x][y] = 6;
-                mapa1[x][y-1] = 7;
+                (*y)++;
+                mapa1[(*x)][(*y)] = 6;
+                mapa1[(*x)][((*y)-1)] = 7;
             }
         passos--;
         mapa1[1][10]= 9;
@@ -266,6 +251,7 @@ void movimentacao2(int mapa1[][12])
 }
 void map()
 {
+    int x=1,y=1,w=1,z=10;
 	int mapa1[12][12]//numero de linhas e colunas da matriz
 	{
     {8,0,0,0,0,0,0,0,0,0,0,8},
@@ -298,11 +284,9 @@ void map()
     };
     distribuicao(mapa1);
 	show_map(mapa1);
-	while(1)
-    {
-	movimentacao1(mapa1);
-	movimentacao2(mapa1);
-    }
+	while(1){
+	movimentacao1(&x,&y,mapa1);
+	movimentacao2(&w,&z,mapa1);}
 }
 int main()
 {
