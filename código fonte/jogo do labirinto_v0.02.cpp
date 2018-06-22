@@ -60,6 +60,8 @@ void show_map(int mapa2[12][12])
                 printf(" || ");
             if(mapa2[i][j]==9)
                 printf(" <> ");
+            if(mapa2[i][j]==10)
+                printf("P1P2");
         }
         putchar('\n');
     }
@@ -169,6 +171,9 @@ void movimentacao1(int *x,int *y,int mapa1[][12])
                 if(tecla1 == 'w' || tecla1 == 'W')
             {
                 (*x)--;
+                if(mapa1[(*x)][(*y)] == 6)
+                    mapa1[(*x)][(*y)] = 10;
+                else
                 mapa1[(*x)][(*y)] = 5;
                 mapa1[((*x)+1)][(*y)] = 7;
             }// fim do if cima
@@ -179,6 +184,9 @@ void movimentacao1(int *x,int *y,int mapa1[][12])
             if(tecla1 == 's' || tecla1 == 'S')
             {
                 (*x)++;
+                if(mapa1[(*x)][(*y)] == 6)
+                    mapa1[(*x)][(*y)] = 10;
+                else
                 mapa1[(*x)][(*y)] = 5;
                 mapa1[((*x)-1)][(*y)] = 7;
             }// fim do if baixo
@@ -189,6 +197,9 @@ void movimentacao1(int *x,int *y,int mapa1[][12])
             if(tecla1 == 'a' || tecla1 == 'A')
             {
                 (*y)--;
+                if(mapa1[(*x)][(*y)] == 6)
+                    mapa1[(*x)][(*y)] = 10;
+                else
                 mapa1[(*x)][(*y)] = 5;
                 mapa1[(*x)][((*y)+1)] = 7;
             }// fim do if esquerda
@@ -197,6 +208,9 @@ void movimentacao1(int *x,int *y,int mapa1[][12])
             if(tecla1 == 'd' || tecla1 == 'D')
             {
                 (*y)++;
+                if(mapa1[(*x)][(*y)] == 6)
+                    mapa1[(*x)][(*y)] = 10;
+                else
                 mapa1[(*x)][(*y)] = 5;
                 mapa1[(*x)][(*y-1)] = 7;
             }
@@ -220,27 +234,39 @@ void movimentacao2(int *x,int *y,int mapa1[][12])
             if(tecla1 == 8)
             {
                 (*x)--;
-                mapa1[(*x)][(*y)] = 6;
+                if(mapa1[(*x)][(*y)] == 5)
+                    mapa1[(*x)][(*y)] = 10;
+                else
+                    mapa1[(*x)][(*y)] == 6;
                 mapa1[((*x)+1)][(*y)] = 7;
             }// fim do if cima
             if(tecla1 == 5)
             {
                 (*x)++;
-                mapa1[(*x)][(*y)] = 6;
+                if(mapa1[(*x)][(*y)] == 5)
+                    mapa1[(*x)][(*y)] = 10;
+                else
+                    mapa1[(*x)][(*y)] = 6;
                 mapa1[((*x)-1)][(*y)] = 7;
             }// fim do if baixo
 
             if(tecla1 == 4)
             {
                 (*y)--;
-                mapa1[(*x)][(*y)] = 6;
+                if(mapa1[(*x)][(*y)] == 5)
+                    mapa1[(*x)][(*y)] = 10;
+                else
+                    mapa1[(*x)][(*y)] = 6;
                 mapa1[(*x)][((*y)+1)] = 7;
             }// fim do if esquerda
 
             if(tecla1 == 6)
             {
                 (*y)++;
-                mapa1[(*x)][(*y)] = 6;
+                if(mapa1[(*x)][(*y)] == 5)
+                    mapa1[(*x)][(*y)] = 10;
+                else
+                    mapa1[(*x)][(*y)] = 6;
                 mapa1[(*x)][((*y)-1)] = 7;
             }
         passos--;
