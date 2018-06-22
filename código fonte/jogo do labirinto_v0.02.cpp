@@ -1,7 +1,4 @@
-/*******************************
-*	File:   Saturn Project	   *
-*	Author: William Torres     *
-****************************** */#include <stdio.h>//Biblioteca p/ printf e putchar
+#include <stdio.h>//Biblioteca p/ printf e putchar
 #include <stdlib.h>//Biblioteca necessaria para gerar numeros aleatorios (passos e distribuicaoo das armadilhas, tochas e o tesouro
 #include <conio.h>//Biblioteca para ler as teclas digitadas pelo usuario, com proposito de faze-lo percorrer o mapa(matriz)
 #include <time.h>//Biblioteca para complementacao da funcao srand()
@@ -10,8 +7,8 @@ int sorteio_passos(int *passos)
 {
 	do
 	{
-		*passos=3+rand()%11;
-	}while(*passos > 10 && *passos < 3 );
+		*passos=rand()%11;
+	}while(*passos > 10 || *passos < 3 );
 }
 void messages(int situacao,int player)
 {
@@ -52,9 +49,7 @@ void show_map(int mapa2[12][12])
         for(int j=0;j<12;j++)
         {
             if(mapa2[i][j]==0)
-                printf("\t == ");
-            if(mapa2[i][j]==8)
-                printf("\t || ");
+                printf(" == ");
             if(mapa2[i][j]==1||mapa2[i][j]==2||mapa2[i][j]==3||mapa2[i][j]==4)
                 printf(" -- ");
             if(mapa2[i][j]==5)
@@ -63,17 +58,21 @@ void show_map(int mapa2[12][12])
               printf(" P2 ");
             if(mapa2[i][j]==7)
               printf("    ");
+            if(mapa2[i][j]==8)
+                printf(" || ");
+            if(mapa2[i][j]==9)
+                printf(" <  >");
         }
         putchar('\n');
     }
 }
-void distribuicao(int mapa1[][12],int *m)
+void distribuicao(int mapa1[][12])
 {
     int trap=0,num_trap=0,where_trap=0;//trap = armadilhas, num_trap = numero de armadilhas
                                        //where_trap = chance de conter uma armadilha naquele elemento da matriz [i][j]
     int tochas=0,num_tocha=0,where_tocha=0;//mesma logica das armadilhas
     int ouro=0,where_ouro=0;//ouro = tesouro
-                            //mesma l√≥gica das armadilhas, mas podendo conter somente um ouro no mapa, e PRECISA TER UM tesouro
+                            //mesma lÛgica das armadilhas, mas podendo conter somente um ouro no mapa, e PRECISA TER UM tesouro
      //ARMADILHAS
     do      //laco para o numero de armadilhas nao passar de 32
     {
@@ -91,13 +90,13 @@ void distribuicao(int mapa1[][12],int *m)
                 {
                     where_trap=rand()%101;
                 }while(where_trap>101);
-                //Quando sortear um valor entre 0 e 100, ir√° fazer a an√°lise abaixo
+                //Quando sortear um valor entre 0 e 100, ir· fazer a an·lise abaixo
                 //Para uma trap ser colocada em um elemento da matriz, o numero sorteado precisa ser entre 0 e 25
-                //O numero de traps colocadas n√£o deve exceder o numero sorteado de traps
+                //O numero de traps colocadas n„o deve exceder o numero sorteado de traps
                 if(where_trap<=25 && trap<num_trap)
                 {
-                    //Sendo tudo verdadeiro, colocaremos a tocha naquela posi√ß√£o e adicionaremos +1 na variavel trap
-                    //ou seja, o loop n√£o precisar√° ser realizado mais alguma vez
+                    //Sendo tudo verdadeiro, colocaremos a tocha naquela posiÁ„o e adicionaremos +1 na variavel trap
+                    //ou seja, o loop n„o precisar· ser realizado mais alguma vez
                     mapa1[i][j]=2;
                     trap++;
                 }
@@ -119,14 +118,14 @@ void distribuicao(int mapa1[][12],int *m)
                 {
                     where_tocha=rand()%101;
                 }while(where_tocha>101);
-                //Quando sortear um valor entre 0 e 100, ir√° fazer a an√°lise abaixo
+                //Quando sortear um valor entre 0 e 100, ir· fazer a an·lise abaixo
                 //Para uma tocha ser colocada em um elemento da matriz, o numero sorteado precisa ser entre 0 e 15
-                //O numero tochas colocadas n√£o deve exceder o numero sorteado de tochas
-                //E n√£o pode colocar uma tocha se j√° colocarmos uma tocha antes naquele local
+                //O numero tochas colocadas n„o deve exceder o numero sorteado de tochas
+                //E n„o pode colocar uma tocha se j· colocarmos uma tocha antes naquele local
                 if(where_tocha<=15 && tochas<num_tocha && mapa1[i][j]!=2)
                 {
-                    //Sendo tudo verdadeiro, colocaremos a tocha naquela posi√ß√£o e adicionaremos +1 na variavel tochas
-                    //ou seja, o loop n√£o precisar√° ser realizado mais alguma vez
+                    //Sendo tudo verdadeiro, colocaremos a tocha naquela posiÁ„o e adicionaremos +1 na variavel tochas
+                    //ou seja, o loop n„o precisar· ser realizado mais alguma vez
                     mapa1[i][j]=3;
                     tochas++;
                 }
@@ -151,66 +150,122 @@ void distribuicao(int mapa1[][12],int *m)
                     }
                 }
 	}while(ouro<1);
-	m++;
 }
-void movimentacao(int mapa1[][12])
+void movimentacao1(int mapa1[][12])
 {
-    char muv; // Essa vari√°vel ir√° receber os valores w,a,s,d para controlar os player
-	int x = 1, y = 1; // Essa vari√°veis s√£o as coordenadas do player e seram de estrema import√¢ncia para a movimenta√ß√£o.
-
-	while(1){
-		muv=getch(); // Se lembra da vari√°vel que ia pegar w,a,s,d? pronto aqui √© onde ela recebe o valor
-
-		/******Com o valor adquirido voc√™ ter√° 4 ifs diferentes 1 pra cada letra.******/
-
-		/* Esse √© o if para cima, se queremos que o Player suba devemos mexer no x diminuindo,
-		 * pode parecer confuso, ou n, vc ter que diminuir para subir, mas vai fazer sentido
-		 */
-		if(muv == 'w')
+    char tecla1=0; // Essa vari·vel ir· receber os valores w,a,s,d para controlar os player
+	int x = 1, y = 1; // Essa vari·veis s„o as coordenadas do player e seram de estrema import‚ncia para a movimentaÁ„o.
+    int passos=0;
+    int passos_andados=0;
+    sorteio_passos(&passos);
+    printf("Player 1 pode dar %d passos\n",passos);
+    while(passos>passos_andados)
         {
-			x--;
-			mapa1[x][y] = 5;
-			mapa1[x+1][y] = 7;
-			mapa1[1][1]= 7;
-		}// fim do if cima
+            tecla1=getch();
+             // Se lembra da vari·vel que ia pegar w,a,s,d? pronto aqui È onde ela recebe o valor
+            /******Com o valor adquirido vocÍ ter· 4 ifs diferentes 1 pra cada letra.******/
+            /* Esse È o if para cima, se queremos que o Player suba devemos mexer no x diminuindo,
+            * pode parecer confuso, ou n, vc ter que diminuir para subir, mas vai fazer sentido
+            */
+                if(tecla1 == 'w' || tecla1 == 'W')
+            {
+                x--;
+                mapa1[x][y] = 5;
+                mapa1[x+1][y] = 7;
+            }// fim do if cima
 
-		/* J√° esse √© o if para descer, seguindo a mesma l√≥gica do anterior por√©m agora
+		/* J· esse È o if para descer, seguindo a mesma lÛgica do anterior porÈm agora
 		 * aumentando o x
 		 */
-		if(muv == 's')
-        {
-			x++;
-			mapa1[x][y] = 5;
-			mapa1[x-1][y] = 7;
-			mapa1[1][1]= 7;
-		}// fim do if baixo
+            if(tecla1 == 's' || tecla1 == 'S')
+            {
+                x++;
+                mapa1[x][y] = 5;
+                mapa1[x-1][y] = 7;
+            }// fim do if baixo
 
-		/* Esse √© o if para ir para a esquerda como est√°
+		/* Esse È o if para ir para a esquerda como est·
 		 * se deslocando na horizontal mexe-se no y, diminuindo
 		 */
-		if(muv == 'a')
-        {
-			y--;
-			mapa1[x][y] = 5;
-			mapa1[x][y+1] = 7;
-			mapa1[1][1]= 7;
-		}// fim do if esquerda
+            if(tecla1 == 'a' || tecla1 == 'A')
+            {
+                y--;
+                mapa1[x][y] = 5;
+                mapa1[x][y+1] = 7;
+            }// fim do if esquerda
 
-		/* Esse √© o √∫ltimo if, aponta para a direita, apenas mexemos no y aumentando-o */
-		if(muv == 'd')
+            /* Esse È o ˙ltimo if, aponta para a direita, apenas mexemos no y aumentando-o */
+            if(tecla1 == 'd' || tecla1 == 'D')
+            {
+                y++;
+                mapa1[x][y] = 5;
+                mapa1[x][y-1] = 7;
+            }
+        passos--;
+        mapa1[1][1] = 9;
+        show_map(mapa1);
+        printf("Player 1 pode dar %d passos\n",passos);
+        }
+}
+void movimentacao2(int mapa1[][12])
+{
+    int tecla1=0; // Essa vari·vel ir· receber os valores w,a,s,d para controlar os player
+	int x = 1, y = 10; // Essa vari·veis s„o as coordenadas do player e seram de estrema import‚ncia para a movimentaÁ„o.
+    int passos=0;
+    sorteio_passos(&passos);
+    printf("Player 2 pode dar %d passos\n",passos);
+    int passos_andados=0;
+    while(passos>passos_andados)
         {
-			y++;
-			mapa1[x][y] = 5;
-			mapa1[x][y-1] = 7;
-			mapa1[1][1]= 7;
-		}
-		show_map(mapa1);
-}
-}
+            scanf("%d",&tecla1); // Se lembra da vari·vel que ia pegar w,a,s,d? pronto aqui È onde ela recebe o valor
+            /******Com o valor adquirido vocÍ ter· 4 ifs diferentes 1 pra cada letra.******/
+            /* Esse È o if para cima, se queremos que o Player suba devemos mexer no x diminuindo,
+            * pode parecer confuso, ou n, vc ter que diminuir para subir, mas vai fazer sentido
+            */
+            //verificacao das teclas
+            if(tecla1 == 8)
+            {
+                x--;
+                mapa1[x][y] = 6;
+                mapa1[x+1][y] = 7;
+                mapa1[1][10] = 9;
+            }// fim do if cima
 
+		/* J· esse È o if para descer, seguindo a mesma lÛgica do anterior porÈm agora
+		 * aumentando o x
+		 */
+            if(tecla1 == 5)
+            {
+                x++;
+                mapa1[x][y] = 6;
+                mapa1[x-1][y] = 7;
+            }// fim do if baixo
+
+		/* Esse È o if para ir para a esquerda como est·
+		 * se deslocando na horizontal mexe-se no y, diminuindo
+		 */
+            if(tecla1 == 4)
+            {
+                y--;
+                mapa1[x][y] = 6;
+                mapa1[x][y+1] = 7;
+            }// fim do if esquerda
+
+            /* Esse È o ˙ltimo if, aponta para a direita, apenas mexemos no y aumentando-o */
+            if(tecla1 == 6)
+            {
+                y++;
+                mapa1[x][y] = 6;
+                mapa1[x][y-1] = 7;
+            }
+        passos--;
+        mapa1[1][10]= 9;
+        show_map(mapa1);
+        printf("Player 2 pode dar %d passos\n",passos);
+        }
+}
 void map()
 {
-    int n=0;
 	int mapa1[12][12]//numero de linhas e colunas da matriz
 	{
     {8,0,0,0,0,0,0,0,0,0,0,8},
@@ -241,15 +296,17 @@ void map()
 	[11][0] [11][1] [11][2] [11][3] [11][4] [11][5] [11][6] [11][7] [11][8] [11][9] [11][10] [11][11]
 */
     };
-    if(n<1)
-        distribuicao(mapa1,&n);
+    distribuicao(mapa1);
 	show_map(mapa1);
-	movimentacao(mapa1);
+	while(1)
+    {
+	movimentacao1(mapa1);
+	movimentacao2(mapa1);
+    }
 }
 int main()
 {
     srand(time(NULL));
     int passos=0,player=0;
-    sorteio_passos(&passos);
     map();
 }
