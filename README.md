@@ -5,7 +5,7 @@ Projeto para composição da nota da segunda unidade
 
 				Sobre a Jogabilidade
 					
-		Sobre os Jogadores:
+Sobre os Jogadores:
 
     1. Cada jogador tem 5 Pontos de Vida(HP).
     2. O jogador 1 utiliza W, A, S, D para mover-se.	
