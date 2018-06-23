@@ -1,5 +1,4 @@
 /****************************
-*                           *
 *   File:   Saturn Project  *
 *   Author: William Torres  *
 *                           *
