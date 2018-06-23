@@ -1,7 +1,8 @@
 /*******************************
 *	File:   Saturn Project	   *
 *	Author: William Torres     *
-****************************** */#include <stdio.h>//Biblioteca p/ printf e putchar
+****************************** */
+#include <stdio.h>//Biblioteca p/ printf e putchar
 #include <stdlib.h>//Biblioteca necessaria para gerar numeros aleatorios (passos e distribuicaoo das armadilhas, tochas e o tesouro
 #include <conio.h>//Biblioteca para ler as teclas digitadas pelo usuario, com proposito de faze-lo percorrer o mapa(matriz)
 #include <time.h>//Biblioteca para complementacao da funcao srand()
@@ -171,7 +172,6 @@ void movimentacao(int mapa1[][12])
 			x--;
 			mapa1[x][y] = 5;
 			mapa1[x+1][y] = 7;
-			mapa1[1][1]= 7;
 		}// fim do if cima
 
 		/* Já esse é o if para descer, seguindo a mesma lógica do anterior porém agora
@@ -182,7 +182,6 @@ void movimentacao(int mapa1[][12])
 			x++;
 			mapa1[x][y] = 5;
 			mapa1[x-1][y] = 7;
-			mapa1[1][1]= 7;
 		}// fim do if baixo
 
 		/* Esse é o if para ir para a esquerda como está
@@ -193,7 +192,6 @@ void movimentacao(int mapa1[][12])
 			y--;
 			mapa1[x][y] = 5;
 			mapa1[x][y+1] = 7;
-			mapa1[1][1]= 7;
 		}// fim do if esquerda
 
 		/* Esse é o último if, aponta para a direita, apenas mexemos no y aumentando-o */
@@ -202,7 +200,6 @@ void movimentacao(int mapa1[][12])
 			y++;
 			mapa1[x][y] = 5;
 			mapa1[x][y-1] = 7;
-			mapa1[1][1]= 7;
 		}
 		show_map(mapa1);
 }
