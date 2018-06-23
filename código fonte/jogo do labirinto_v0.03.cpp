@@ -1,18 +1,12 @@
 /****************************
 *   File:   Saturn Project  *
 *   Author: William Torres  *
-*                           *
 *****************************/
-#include <stdio.h>
-//Biblioteca p/ funcao printf e putchar
-#include <stdlib.h>
-//"" p/ funcao rand( ) - gerar numeros aleatorios (passos e distribuicaoo das armadilhas, tochas e o tesouro
-#include <conio.h>
-//""p/ getch ( ) - ler as teclas digitadas pelo usuario, com proposito de faze-lo percorrer o mapa(matriz)
-#include <time.h>
-//""p/ complementacao da funcao srand(time(NULL))
-#include <windows.h>
-//""p/ funcao sleep - esperar algum tempo e o programa voltar a executar as proximas linhas
+#include <stdio.h>//Biblioteca p/ funcao printf e putchar
+#include <stdlib.h>//"" p/ funcao rand( ) - gerar numeros aleatorios (passos e distribuicaoo das armadilhas, tochas e o tesouro
+#include <conio.h>//""p/ getch ( ) - ler as teclas digitadas pelo usuario, com proposito de faze-lo percorrer o mapa(matriz)
+#include <time.h>//""p/ complementacao da funcao srand(time(NULL))
+#include <windows.h>//""p/ funcao sleep(1) - esperar algum tempo e o programa voltar a executar as proximas linhas
 void menu(char *user)
 {
     printf("\t\tBem-vindo ao caca ao tesouro!\n\n");
@@ -26,9 +20,9 @@ void menu(char *user)
             {
                 system("cls");
                 printf("Processando sua resposta...");
-                Sleep(2500);
+                Sleep(0.5);
                 printf("\n\t\t\tEntao vamos comecar");
-                Sleep(1500);
+                Sleep(1);
                 system("cls");
                 printf("Comecou\n");
                 break;
@@ -42,14 +36,14 @@ void menu(char *user)
                 printf("GitHub:    github.com/williamtorres1\n");
                 printf("Facebook:  facebook.com/williamtorres.4\n");
                 printf("Instagram: instagram.com/williamtoorres\n");
-                Sleep(5000);
+                Sleep(5);
                 break;
             }
         case 'c':
         case 'C':
             {
                 printf("E triste ve-lo partir:/ \nAte mais...\n");
-                Sleep(1500);
+                Sleep(1.5);
                 system("cls");
                 printf("Encerrando...");
                 break;
@@ -58,7 +52,7 @@ void menu(char *user)
         case 'D':
             {
                 printf("Processando sua resposta...");
-                Sleep(2500);
+                Sleep(0.5);
                 printf("\nLamento, ainda nao e possivel\n");
                 printf("Quem sabe em 2030?\n");
                 break;
@@ -67,14 +61,13 @@ void menu(char *user)
             {
                 system("cls");
                 printf("Processando sua resposta...");
-                Sleep(2500);
+                Sleep(0.5);
                 system("cls");
                 printf("Estamos chateados com voce\n");
                 printf("Digita um valor valido ai, mano\n");
                 break;
             }
     }
-    Sleep(500);
 }
 void sorteio_passos(int *passos)
 /**Funcao p/ sortear quantos passos serao realizados pelos jogadores*/
@@ -114,7 +107,7 @@ void messages(int situacao,int player)
 			break;
 		}
 		case 7:
-        {
+        {   printf("\nPlayer I\tPlayer II\nHP:5/5\t\tHP:5/5\n");
             break;
         }
 	}
@@ -144,27 +137,27 @@ void show_map(int mapa2[12][12])
         for(int j=0;j<12;j++)
         {
             if(mapa2[i][j]==0)
-                printf(" == ",mapa2[i][j]);
+                printf(" == ");
             if(mapa2[i][j]==1||mapa2[i][j]==2||mapa2[i][j]==3||mapa2[i][j]==4)
-                printf(" -- ",mapa2[i][j]);
+                printf(" -- ");
             if(mapa2[i][j]==22)
-                printf("TRAP",mapa2[i][j]);
+                printf("TRAP");
             if(mapa2[i][j]==33)
                 printf("FIRE",mapa2[i][j]);
             if(mapa2[i][j]==44)
-                printf("GOLD",mapa2[i][j]);
+                printf("GOLD");
             if(mapa2[i][j]==5)
-                printf(" P1 ",mapa2[i][j]);
+                printf(" P1 ");
             if(mapa2[i][j]==6)
-                printf(" P2 ",mapa2[i][j]);
+                printf(" P2 ");
             if(mapa2[i][j]==7)
-                printf("    ",mapa2[i][j]);
+                printf("    ");
             if(mapa2[i][j]==8)
-                printf(" || ",mapa2[i][j]);
+                printf(" || ");
             if(mapa2[i][j]==9)
-                printf(" <> ",mapa2[i][j]);
+                printf(" <> ");
             if(mapa2[i][j]==10)
-                printf("P1P2",mapa2[i][j]);
+                printf("P1P2");
         }
         putchar('\n');
     }
@@ -181,7 +174,7 @@ void distribuicao(int mapa1[][12])
      //ARMADILHAS
     do      //laco para o numero de armadilhas nao passar de 32
     {
-        num_trap=rand()%32;
+        num_trap=rand()%33;
 	}while(num_trap>32);
 	printf(" \nTerao %d Armadilhas",num_trap);
   //printf p/ poder contar no mapa se as armadilhas estao funcionando
@@ -198,7 +191,7 @@ void distribuicao(int mapa1[][12])
                 //Quando sortear um valor entre 0 e 100, irá fazer a análise abaixo
                 //Para uma trap ser colocada em um elemento da matriz, o numero sorteado precisa ser entre 0 e 25
                 //O numero de traps colocadas não deve exceder o numero sorteado de traps
-                if(where_trap<=25 && trap<num_trap)
+                if(where_trap <= 25 && where_trap > 0 && trap < num_trap)
                 {
                     //Sendo tudo verdadeiro, colocaremos a tocha naquela posição e adicionaremos +1 na variavel trap
                     //ou seja, o loop não precisará ser realizado mais alguma vez
@@ -227,7 +220,7 @@ void distribuicao(int mapa1[][12])
                 //Para uma tocha ser colocada em um elemento da matriz, o numero sorteado precisa ser entre 0 e 15
                 //O numero tochas colocadas não deve exceder o numero sorteado de tochas
                 //E não pode colocar uma tocha se já colocarmos uma tocha antes naquele local
-                if(where_tocha<=15 && tochas<num_tocha && mapa1[i][j]!=2)
+                if(where_tocha <= 15 && where_tocha > 0 && tochas < num_tocha && mapa1[i][j] != 2)
                 {
                     //Sendo tudo verdadeiro, colocaremos a tocha naquela posição e adicionaremos +1 na variavel tochas
                     //ou seja, o loop não precisará ser realizado mais alguma vez
@@ -248,7 +241,7 @@ void distribuicao(int mapa1[][12])
                 {
                     where_ouro=rand()%101;
                 }while(where_ouro>101);
-                if(where_ouro<=2 && ouro<1 && mapa1[i][j]==1)
+                if(where_ouro == 1 && ouro < 1 && mapa1[i][j] == 1)
                     {
                         mapa1[i][j]=4;
                         ouro++;
@@ -269,6 +262,9 @@ void movimentacao1(int *x,int *y,int mapa1[][12])
 
     //Variavel passos irá armazenar o valor sorteado, e servirá para o controle do laço de repeticao
     sorteio_passos(&passos);
+    system("cls");
+    show_map(mapa1);
+    messages(7,1);
     printf("Player 1: Eu posso dar %d passos\n",passos);
     while(passos>passos_andados)
         {
@@ -292,8 +288,6 @@ void movimentacao1(int *x,int *y,int mapa1[][12])
                     mapa1[(*x)][(*y)] = 33;
                 if(mapa1[(*x)][(*y)] == 4)
                     mapa1[(*x)][(*y)] = 44;
-                else
-                    mapa1[(*x)][(*y)] = 5;
                 mapa1[((*x)+1)][(*y)] = 7;
             }// fim do if cima
 
@@ -311,8 +305,6 @@ void movimentacao1(int *x,int *y,int mapa1[][12])
                     mapa1[(*x)][(*y)] = 33;
                 if(mapa1[(*x)][(*y)] == 4)
                     mapa1[(*x)][(*y)] = 44;
-                else
-                mapa1[(*x)][(*y)] = 5;
                 mapa1[((*x)-1)][(*y)] = 7;
             }// fim do if baixo
 
@@ -330,8 +322,6 @@ void movimentacao1(int *x,int *y,int mapa1[][12])
                     mapa1[(*x)][(*y)] = 33;
                 if(mapa1[(*x)][(*y)] == 4)
                     mapa1[(*x)][(*y)] = 44;
-                else
-                mapa1[(*x)][(*y)] = 5;
                 mapa1[(*x)][((*y)+1)] = 7;
             }// fim do if esquerda
 
@@ -347,14 +337,13 @@ void movimentacao1(int *x,int *y,int mapa1[][12])
                     mapa1[(*x)][(*y)] = 33;
                 if(mapa1[(*x)][(*y)] == 4)
                     mapa1[(*x)][(*y)] = 44;
-                else
-                mapa1[(*x)][(*y)] = 5;
                 mapa1[(*x)][(*y-1)] = 7;
             }
         passos--;
         }
-        mapa1[1][1] = 9;//Mostrar sempre a posicao inicial do jogador
+        mapa1[(*x)][(*y)] = 9;//Mostrar sempre a posicao inicial do jogador
         show_map(mapa1);//Apos o jogador ter digitado algo, temos que imprimir a matriz novamente
+        messages(7,1);
         printf("Player 1 tem mais %d passos...\n",passos);//Mostrar ao jogador quantos passos restantes ele tem
         }
 }
@@ -365,6 +354,7 @@ void movimentacao2(int *x,int *y,int mapa1[][12])
 //	*x = 1, *y = 10; Essas variaveis sao as coordenadas do player e serao de extrema importancia para a movimentacao.
     int passos=0;
     sorteio_passos(&passos);
+    messages(7,1);
     printf("Player 2: Eu posso dar %d passos\n",passos);
     int passos_andados=0;
     while(passos>passos_andados)
@@ -383,8 +373,6 @@ void movimentacao2(int *x,int *y,int mapa1[][12])
                     mapa1[(*x)][(*y)] = 33;
                 if(mapa1[(*x)][(*y)] == 4)
                     mapa1[(*x)][(*y)] = 44;
-                else
-                    mapa1[(*x)][(*y)] == 6;
                 mapa1[((*x)+1)][(*y)] = 7;
             }// fim do if cima
             if(tecla1 == 5)
@@ -398,8 +386,6 @@ void movimentacao2(int *x,int *y,int mapa1[][12])
                     mapa1[(*x)][(*y)] = 33;
                 if(mapa1[(*x)][(*y)] == 4)
                     mapa1[(*x)][(*y)] = 44;
-                else
-                    mapa1[(*x)][(*y)] = 6;
                 mapa1[((*x)-1)][(*y)] = 7;
             }// fim do if baixo
 
@@ -414,8 +400,6 @@ void movimentacao2(int *x,int *y,int mapa1[][12])
                     mapa1[(*x)][(*y)] = 33;
                 if(mapa1[(*x)][(*y)] == 4)
                     mapa1[(*x)][(*y)] = 44;
-                else
-                    mapa1[(*x)][(*y)] = 6;
                 mapa1[(*x)][((*y)+1)] = 7;
             }// fim do if esquerda
 
@@ -430,14 +414,13 @@ void movimentacao2(int *x,int *y,int mapa1[][12])
                     mapa1[(*x)][(*y)] = 33;
                 if(mapa1[(*x)][(*y)] == 4)
                     mapa1[(*x)][(*y)] = 44;
-                else
-                    mapa1[(*x)][(*y)] = 6;
                 mapa1[(*x)][((*y)-1)] = 7;
             }
             passos--;
         }
-        mapa1[1][10] = 9;
+        mapa1[(*x)][(*y)] = 9;
         show_map(mapa1);
+        messages(7,1);
         printf("Player 2 tem mais %d passos...\n",passos);
         }
     /** 0 --- PAREDE HORIZONTAL
@@ -456,9 +439,26 @@ void movimentacao2(int *x,int *y,int mapa1[][12])
        44 --- TESOURO ENCONTRADO
     **/
 }
+void escolha_player(int player)
+{
+    printf("Jogador %d, onde deseja começar a jogar?\n",player);
+	printf("||  ==   ==   ==   ==   ==   ==   ==  ==  ==  ==  ||\n");
+	printf("||  1    --   --   --   --   --   --  --  --  2   ||\n");
+	printf("||  --   --   --   --   --   --   --  --  --  --  ||\n");
+	printf("||  --   --   --   --   --   --   --  --  --  --  ||\n");
+	printf("||  --   --   --   --   --   --   --  --  --  --  ||\n");
+	printf("||  --   --   --   --   --   --   --  --  --  --  ||\n");
+	printf("||  --   --   --   --   --   --   --  --  --  --  ||\n");
+	printf("||  --   --   --   --   --   --   --  --  --  --  ||\n");
+	printf("||  --   --   --   --   --   --   --  --  --  --  ||\n");
+	printf("||  --   --   --   --   --   --   --  --  --  --  ||\n");
+	printf("||  3    --   --   --   --   --   --  --  --  4   ||\n");
+	printf("||  ==   ==   ==   ==   ==   ==   ==  ==  ==  ==  ||\n");
+}
 void map()
 {
     int x=1,y=1,w=1,z=10;
+    int user1=0,user2=0;
 	int mapa1[12][12]//numero de linhas e colunas da matriz
 	{
     {8,0,0,0,0,0,0,0,0,0,0,8},
@@ -490,7 +490,60 @@ void map()
 */
     };
     distribuicao(mapa1);
-	show_map(mapa1);
+    system("cls");
+	escolha_player(1);
+	scanf("%d",&user1);//user1=getch() - '0';
+	if(user1== 1 || user1 == 2 || user1 == 3 || user1 == 4)
+    {   if(user1==1)
+        {   x=1;
+            y=1;
+        }
+        if(user1==2)
+        {   x=1;
+            y=10;
+        }
+        if(user1==3)
+        {   x=10;
+            y=1;
+        }
+        if(user1==4)
+        {   x=10;
+            y=10;
+        }
+    }
+    else
+    {   x=1;
+        y=1;
+    }
+    system("cls");
+    escolha_player(2);
+	scanf("%d",&user2);//user2=getch() - '0';
+	if(user2== 1 || user2 == 2 || user2 == 3 || user2 == 4 || user2 != user1)
+    {   if(user2==1)
+        {   w=1;
+            z=1;
+        }
+        if(user2==2)
+        {   w=1;
+            z=10;
+        }
+        if(user2==3)
+        {   w=10;
+            z=1;
+        }
+        if(user2==4)
+        {   w=10;
+            z=10;
+        }
+        if(user2 == user1)
+        {   w=1;
+            z=10;
+        }
+    }
+    else
+    {   w=1;
+        z=10;
+    }
 	while(1)
 	{
         movimentacao1(&x,&y,mapa1);
@@ -499,7 +552,7 @@ void map()
 }
 int main()
 {
-    srand(time(NULL));
+    //srand(time(NULL));
     char user=0;
     menu(&user);
     if(user == 'a' || user == 'A')
@@ -507,3 +560,18 @@ int main()
     system("pause");
     return 1;
 }
+/*
+    [i][j]
+	||  ==   ==   ==   ==   ==   ==   ==  ==  ==  == ||
+	||  <>   --   --   --   --   --   --  --  --  <> ||
+	||  --   --   --   --   --  FIRE  --  -- TRAP -- ||
+	||  --   FIRE  [3][3] [3][4] [3][5] [3][6] [3][7] [3][8] [3][9]  FIRE   ||
+	||  --   [4][2] [4][3] [4][4] [4][5] [4][6] [4][7] TRAP -- -- ||
+	||  TRAP   TRAP  [5][3] [5][4] [5][5] [5][6] [5][7] [5][8] [5][9] [5][10] ||
+	|| [6][1] [6][2] [6][3] [6][4] [6][5] [6][6] [6][7] [6][8] [6][9] [6][10] ||
+	|| [7][1] [7][2] [7][3] [7][4] [7][5] [7][6] [7][7] [7][8] [7][9]  -- ||
+	|| [8][1] [8][2] [8][3] [8][4] [8][5] [8][6] [8][7] [8][8] [8][9]  -- ||
+	|| [9][1] [9][2] [9][3] [9][4] [9][5] [9][6] [9][7] [9][8] [9][9]  -- ||
+	||  --   --   --   --   --   --   --  --  --  -- ||
+	||  ==   ==   ==   ==   ==   ==   ==  ==  ==  == ||
+*/
