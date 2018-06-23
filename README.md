@@ -5,7 +5,7 @@ Projeto para composição da nota da segunda unidade
 
 				Sobre a Jogabilidade
 					
-				Sobre os Jogadores:
+		Sobre os Jogadores:
 
     1. Cada jogador tem 5 Pontos de Vida(HP).
     2. O jogador 1 utiliza W, A, S, D para mover-se.	
@@ -13,7 +13,7 @@ Projeto para composição da nota da segunda unidade
     3. O jogador 2 utiliza 8, 4, 5, 6 para mover-se.	
        ex: 8 – Move o jogador para cima; 4 - Move o jogador para a esquerda; 5 – Move o jogador para a esquerda; 6 – Move o jogador para a direita.
 
-				Sobre os Elementos:
+		Sobre os Elementos:
 
     1. Armadilha: Retira um Ponto de Vida àquele que pisar nela.
        O jogador perderá 1 Ponto de Vida ao entrar numa armadilha. 
@@ -22,7 +22,7 @@ Projeto para composição da nota da segunda unidade
     2. Tocha:	Ilumina um elemento às suas verticais e horizontais. Um elemento à cima, à direita, à esquerda e abaixo serão revelados.
                Ex: Tocha –> &P1&
                
-				Objetivos do jogo:
+		Objetivos do jogo:
 
     1. Ficar vivo até encontrar o tesouro(ou gold).
     2. Encontrar o tesouro primeiro que o adversário.
@@ -30,7 +30,7 @@ Projeto para composição da nota da segunda unidade
     3. Não morrer antes do adversário.
        Ex: O jogador que morrer primeiro, automaticamente o outro ganha.
        
-				Mensagens:
+		Mensagens:
 
     1. Abaixo do Mapa, mostrar as informações dos jogadores.
        Ex: PLAYER I		PLAYER II
@@ -43,7 +43,7 @@ Projeto para composição da nota da segunda unidade
     4. Ao encontrar uma tocha.
        Ex: Player I encontrou uma tocha.
        
-				Sobre a construção do jogo – Criação do código
+		Sobre a construção do jogo – Criação do código
 
     1. Como decidir onde ficará cada elemento – TEM DE SER ALEATÓRIO:
         #include <stdlib.h> /* Para a função rand( ) e srand( ) */
@@ -56,7 +56,7 @@ Projeto para composição da nota da segunda unidade
     3. Receberá como argumento o retorno da função time(NULL)
        Ex: srand(time(NULL)) – Detalhe: Só precisa fazer isso UMA VEZ no programa, logo no início do main.
 
-				Definições dos elementos da matriz
+		Definições dos elementos da matriz
 
     1. Precisa de um símbolo indicando o ponto de partida.
         1. Ex: <> –> Indicará de onde aquele jogador deu partida.
@@ -74,7 +74,7 @@ Projeto para composição da nota da segunda unidade
     7. Ordem de preencher os elementos:
         1. De cima para baixo ou de baixo para cima, fica à critério do programador.
 
-				Avaliação
+		Avaliação
 
        Você começa com 10 e perde pontos se:
     1. Não executou as armadilhas corretamente: -2,0 pontos.
@@ -108,4 +108,5 @@ Projeto para composição da nota da segunda unidade
 
     3. Se permitir 4 jogadores jogarem ao mesmo tempo.
        
-		NUNCA USEM VARIÁVEIS GLOBAIS
+       
+					NUNCA USEM VARIÁVEIS GLOBAIS
