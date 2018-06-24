@@ -142,6 +142,26 @@ void show_map(int mapa2[12][12])
             if(mapa2[i][j]==31)
                 {printf("FOGO");
                 /*mapa2[i][j]=31;*/}
+            if(mapa2[i][j]==41)
+               printf("GOLD");
+
+            if(mapa2[i][j]==44)
+               printf("GOLD");
+            if(mapa2[i][j]==5)
+                printf(" P1 ");
+            if(mapa2[i][j]==6)
+                printf(" P2 ");
+            if(mapa2[i][j]==7)
+                printf("    ");
+            if(mapa2[i][j]==8)
+                printf(" || ");
+            if(mapa2[i][j]==9)
+                printf(" <> ");
+            if(mapa2[i][j]==10)
+                printf("P1P2");
+/**         ALGORITMO DA TOCHA      *
+*           Foi colocado abaixo de todos os outros if's, para evitar erros no comportamento da matriz.
+*           Estava com alguns bugs gráficos */
             if(mapa2[i][j]==33)
                 {
                     printf("FIRE");
@@ -186,23 +206,6 @@ void show_map(int mapa2[12][12])
                         mapa2[i][j-1]=41;
                     }
                 }
-            if(mapa2[i][j]==44)
-                {
-                    printf("GOLD");
-                    //messages(4,1);
-                }
-            if(mapa2[i][j]==5)
-                printf(" P1 ");
-            if(mapa2[i][j]==6)
-                printf(" P2 ");
-            if(mapa2[i][j]==7)
-                printf("    ");
-            if(mapa2[i][j]==8)
-                printf(" || ");
-            if(mapa2[i][j]==9)
-                printf(" <> ");
-            if(mapa2[i][j]==10)
-                printf("P1P2");
         }
         putchar('\n');
     }
