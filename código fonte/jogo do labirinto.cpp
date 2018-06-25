@@ -72,8 +72,7 @@ void sorteio_passos(int *passos)/**Funcao p/ sortear quantos passos serao realiz
 
 void messages(int situacao,int player)/**Funcao p/ Mostrar todas as mensagens aos jogadores.
 Necessita de 2 parametros, a mensagem que sera mostrada e a qual jogador ela se refere */
-{	int hp1=5,hp2=5;
-    switch(situacao)
+{   switch(situacao)
 	{	case 1:
 		{   printf("\t\t\tBem-vindo a caca ao Tesouro!\n\n\n");
 			break;
@@ -98,10 +97,10 @@ Necessita de 2 parametros, a mensagem que sera mostrada e a qual jogador ela se 
             main();
 			break;
 		}
-		case 5:
+		/*case 5:
         {   printf("\n***Player I*** \t\t\t***Player II***\n **HP:%d/5** \t\t\t **HP:%d/5**\n",hp1,hp2);
             break;
-        }
+        }*/
 	}
 }
 
@@ -209,7 +208,7 @@ void show_map(int mapa2[12][12])
         }
         putchar('\n');
     }
-    messages(5,0);
+    //messages(5,0);
 }
 
 void distribuicao(int mapa1[][12])/**Funcao p/ distribuir as armadilhas, tochas e o ouro dentro do mapa
@@ -285,7 +284,7 @@ Foi criada uma funcao, para os elementos nao alterarem durante a execucao do pro
 	}while(ouro<1);
 }
 
-void movimentacao1(int init_x,int init_y, int *x,int *y,int mapa1[][12])/** Funcao p/ movimentar o player 1 */
+void movimentacao1(int *hp1,int *ouro1,int init_x,int init_y, int *x,int *y,int mapa1[][12])/** Funcao p/ movimentar o player 1 */
 {    //*x, *y  Essa variaveis sao as coordenadas do player e serao de extrema importancia para a movimentacao.
 /** Estou utilizando ponteiros em x e y, para nao mostrar na tela mais de 1x P1 ou P2(se fosse o caso)
  *  Isso estava acontecendo quando, ao terminar os passos do jogador I, depois os passos do jogador II.
@@ -297,7 +296,9 @@ void movimentacao1(int init_x,int init_y, int *x,int *y,int mapa1[][12])/** Func
     show_map(mapa1);
     messages(7,1);
     printf("Player 1: Eu posso dar %d passos\n",passos);
-    while(passos>0)//Quando chegar em 0, termina o laco e o termina o turno
+    while(passos > 0 && *ouro1 != 1 )
+/** Quando a variavel passos chegar em 0, termina o laco e o termina o turno
+    Ou se o jogador encontrar o ouro tambem terminara o laco    */
         {   tecla1=getch();
              // Se lembra da vari�vel que ia pegar w,a,s,d? pronto aqui � onde ela recebe o valor
             /******Com o valor adquirido voc� ter� 4 ifs diferentes 1 pra cada letra.******/
@@ -323,6 +324,8 @@ void movimentacao1(int init_x,int init_y, int *x,int *y,int mapa1[][12])/** Func
                     if(mapa1[(*x)][(*y)]==2)
                     {   mapa1[*x][*y]=22;
                         mapa1[((*x)+1)][(*y)]=7;
+                        *hp1--;
+                        messages(2,1);
                     }
                     if(mapa1[(*x)][(*y)]==3)
                     {   mapa1[*x][*y]=33;
@@ -331,6 +334,8 @@ void movimentacao1(int init_x,int init_y, int *x,int *y,int mapa1[][12])/** Func
                     if(mapa1[(*x)][(*y)]==4)
                     {   mapa1[*x][*y]=44;
                         mapa1[((*x)+1)][(*y)]=7;
+                        *ouro1++;
+                        break;
                     }
                     if(mapa1[(*x)][(*y)]==6)
                     {   mapa1[*x][*y]=10;
@@ -368,6 +373,8 @@ void movimentacao1(int init_x,int init_y, int *x,int *y,int mapa1[][12])/** Func
                     if(mapa1[(*x)][(*y)]==2)
                     {   mapa1[*x][*y]=22;
                         mapa1[((*x)-1)][(*y)]=7;
+                        *hp1--;
+                        messages(2,1);
                     }
                     if(mapa1[(*x)][(*y)]==3)
                     {   mapa1[*x][*y]=33;
@@ -376,6 +383,8 @@ void movimentacao1(int init_x,int init_y, int *x,int *y,int mapa1[][12])/** Func
                     if(mapa1[(*x)][(*y)]==4)
                     {   mapa1[*x][*y]=44;
                         mapa1[((*x)-1)][(*y)]=7;
+                        *ouro1++;
+                        break;
                     }
                     if(mapa1[(*x)][(*y)]==6)
                     {   mapa1[*x][*y]=10;
@@ -413,6 +422,8 @@ void movimentacao1(int init_x,int init_y, int *x,int *y,int mapa1[][12])/** Func
                     if(mapa1[(*x)][(*y)]==2)
                     {   mapa1[*x][*y]=22;
                         mapa1[((*x))][(*y)+1]=7;
+                        *hp1--;
+                        messages(2,1);
                     }
                     if(mapa1[(*x)][(*y)]==3)
                     {   mapa1[*x][*y]=33;
@@ -421,6 +432,8 @@ void movimentacao1(int init_x,int init_y, int *x,int *y,int mapa1[][12])/** Func
                     if(mapa1[(*x)][(*y)]==4)
                     {   mapa1[*x][*y]=44;
                         mapa1[((*x))][(*y)+1]=7;
+                        *ouro1++;
+                        break;
                     }
                     if(mapa1[(*x)][(*y)]==6)
                     {   mapa1[*x][*y]=10;
@@ -456,6 +469,8 @@ void movimentacao1(int init_x,int init_y, int *x,int *y,int mapa1[][12])/** Func
                 if(mapa1[(*x)][(*y)]==2)
                 {   mapa1[*x][*y]=22;
                     mapa1[((*x))][(*y)-1]=7;
+                    *hp1--;
+                    messages(2,1);
                 }
                 if(mapa1[(*x)][(*y)]==3)
                 {   mapa1[*x][*y]=33;
@@ -464,6 +479,8 @@ void movimentacao1(int init_x,int init_y, int *x,int *y,int mapa1[][12])/** Func
                 if(mapa1[(*x)][(*y)]==4)
                 {   mapa1[*x][*y]=44;
                     mapa1[((*x))][(*y)-1]=7;
+                    *ouro1++;
+                    break;
                 }
                 if(mapa1[(*x)][(*y)]==6)
                 {   mapa1[*x][*y]=10;
@@ -484,13 +501,12 @@ void movimentacao1(int init_x,int init_y, int *x,int *y,int mapa1[][12])/** Func
         show_map(mapa1);//Apos o jogador ter digitado algo, temos que imprimir a matriz novamente
         messages(7,1);
         printf("Player 1 tem mais %d passos...\n",passos);//Mostrar ao jogador quantos passos restantes ele tem
-        }
-
+            }
         }
         system("cls");//Sempre limpar o que estava antes na tela
 }
 
-void movimentacao2(int init_x,int init_y, int *x,int *y,int mapa1[][12])/** Funcao p/ movimentar o player 2 */
+void movimentacao2(int *hp2, int *ouro2,int init_x,int init_y, int *x,int *y,int mapa1[][12])/** Funcao p/ movimentar o player 2 */
 {    //*x, *y  Essa variaveis sao as coordenadas do player e serao de extrema importancia para a movimentacao.
     int tecla1=0; // Essa variavel ira receber os valores w,a,s,d para controlar o player 1
     int passos=0;//Variavel passos_andados irá armazenar cada passo realizado pelo jogador até chegar no valor sorteado
@@ -501,7 +517,7 @@ void movimentacao2(int init_x,int init_y, int *x,int *y,int mapa1[][12])/** Func
     show_map(mapa1);
     messages(7,2);
     printf("Player 2: Eu posso dar %d passos\n",passos);
-    while(passos>0)//Quando chegar em 0, termina o laco e o termina o turno
+    while(passos>0 && *ouro2 != 1)//Quando chegar em 0, termina o laco e o termina o turno
         {   tecla1=getch()-'0';
              // Se lembra da vari?vel que ia pegar w,a,s,d? pronto aqui ? onde ela recebe o valor
             /******Com o valor adquirido voc? ter? 4 ifs diferentes 1 pra cada letra.******/
@@ -527,6 +543,7 @@ void movimentacao2(int init_x,int init_y, int *x,int *y,int mapa1[][12])/** Func
                     if(mapa1[(*x)][(*y)]==2)
                     {   mapa1[*x][*y]=22;
                         mapa1[((*x)+1)][(*y)]=7;
+                        *hp2--;
                     }
                     if(mapa1[(*x)][(*y)]==3)
                     {   mapa1[*x][*y]=33;
@@ -535,6 +552,7 @@ void movimentacao2(int init_x,int init_y, int *x,int *y,int mapa1[][12])/** Func
                     if(mapa1[(*x)][(*y)]==4)
                     {   mapa1[*x][*y]=44;
                         mapa1[((*x)+1)][(*y)]=7;
+                        *ouro2=1;
                     }
                     if(mapa1[(*x)][(*y)]==5)
                     {   mapa1[*x][*y]=10;
@@ -571,6 +589,7 @@ void movimentacao2(int init_x,int init_y, int *x,int *y,int mapa1[][12])/** Func
                     if(mapa1[(*x)][(*y)]==2)
                     {   mapa1[*x][*y]=22;
                         mapa1[((*x)-1)][(*y)]=7;
+                        *hp2--;
                     }
                     if(mapa1[(*x)][(*y)]==3)
                     {   mapa1[*x][*y]=33;
@@ -579,6 +598,7 @@ void movimentacao2(int init_x,int init_y, int *x,int *y,int mapa1[][12])/** Func
                     if(mapa1[(*x)][(*y)]==4)
                     {   mapa1[*x][*y]=44;
                         mapa1[((*x)-1)][(*y)]=7;
+                        *ouro2=1;
                     }
                     if(mapa1[(*x)][(*y)]==5)
                     {   mapa1[*x][*y]=10;
@@ -616,6 +636,7 @@ void movimentacao2(int init_x,int init_y, int *x,int *y,int mapa1[][12])/** Func
                     if(mapa1[(*x)][(*y)]==2)
                     {   mapa1[*x][*y]=22;
                         mapa1[((*x))][(*y)+1]=7;
+                        *hp2--;
                     }
                     if(mapa1[(*x)][(*y)]==3)
                     {   mapa1[*x][*y]=33;
@@ -624,6 +645,7 @@ void movimentacao2(int init_x,int init_y, int *x,int *y,int mapa1[][12])/** Func
                     if(mapa1[(*x)][(*y)]==4)
                     {   mapa1[*x][*y]=44;
                         mapa1[((*x))][(*y)+1]=7;
+                        *ouro2=1;
                     }
                     if(mapa1[(*x)][(*y)]==5)
                     {   mapa1[*x][*y]=10;
@@ -659,6 +681,7 @@ void movimentacao2(int init_x,int init_y, int *x,int *y,int mapa1[][12])/** Func
                     if(mapa1[(*x)][(*y)]==2)
                     {   mapa1[*x][*y]=22;
                         mapa1[((*x))][(*y)-1]=7;
+                        *hp2--;
                 }
                 if(mapa1[(*x)][(*y)]==3)
                 {   mapa1[*x][*y]=33;
@@ -667,6 +690,7 @@ void movimentacao2(int init_x,int init_y, int *x,int *y,int mapa1[][12])/** Func
                 if(mapa1[(*x)][(*y)]==4)
                 {   mapa1[*x][*y]=44;
                     mapa1[((*x))][(*y)-1]=7;
+                    *ouro2=1;
                 }
                 if(mapa1[(*x)][(*y)]==5)
                 {   mapa1[*x][*y]=10;
@@ -688,9 +712,8 @@ void movimentacao2(int init_x,int init_y, int *x,int *y,int mapa1[][12])/** Func
         //messages();
         printf("Player 2 tem mais %d passos...\n",passos);//Mostrar ao jogador quantos passos restantes ele tem
         }
-
         }
-        system("cls");//Sempre limpar o que estava antes na tela
+       // system("cls");//Sempre limpar o que estava antes na tela
 
 }
 
@@ -714,6 +737,10 @@ void map()
  *  init_w e  init_z = Coordendas iniciais do Player II */
     int user1=0,user2=0;
 /*  user1 e user2 = Variaveis para fazer os jogadores escolherem onde irao comecar a jogar */
+    int ouro1=0,ouro2=0;
+/** Variaveis para encerrar o jogo */
+    int hp1=5,hp2=5;
+/** Para controlar o hp dos jogadores   */
 	int mapa1[12][12]//numero de linhas e colunas da matriz
 	{
     {8,0,0,0,0,0,0,0,0,0,0,8},
@@ -749,7 +776,9 @@ void map()
 	escolha_player(1);
 /** Este eh o procedimento somente para mostrar o mapa ao jogador, escolhi criar ele, porque estava ocupando muitas linhas
     O numero (1) como argumento eh p/ as mensagens serem direcionadas ao player I           */
-	scanf("%d",&user1);//user1=getch() - '0';
+    system("cls");
+    escolha_player(1);
+    scanf("%d",&user1);//user1=getch() - '0';
 /** Se o player I escolher algumnumero entre 1 e 4, ira alterar as variaveis x e y(Coordendas do jogador I)
     */
 	if(user1 == 1 || user1 == 2 || user1 == 3 || user1 == 4)
@@ -771,7 +800,7 @@ void map()
         }
     }
 /** Se o Jogador digitar algum valor errado, ele ira iniciar o jogo a partir das coordenadas padrão */
-    else
+    else if(user1 != 1 || user1 != 2 || user1 != 3 || user1 != 4)
     {   x=1;
         y=1;
     }
@@ -803,18 +832,32 @@ void map()
             z=10;
         }
     }
-    else
+    else    if(user2 != 1 || user2 != 2 || user2 != 3 || user2 != 4 || user2==user1)
     {   w=1;
         z=10;
-    }
+    }/*
+    if(user1==2 && user2 != 1 || user2 != 2 || user2 != 3 || user2 != 4)
+    {
+        w=1;
+        z=1;
+    }*/
 	init_x=x;   init_y=y;   init_w = w; init_z=z;
 /*  Enviar o init_x e etc como argumento para o procedimento show_map(), para mostrar onde os jogadores escolheram iniciar */
-	while(1)
+	while(ouro1 < 1 && ouro2 < 1 && hp1 > 0 && hp2 > 0)
 	{
 	    show_map(mapa1);
-
-        movimentacao1(init_x,init_y,&x,&y,mapa1);
-        movimentacao2(init_w,init_z,&w,&z,mapa1);
+        movimentacao1(&hp1,&ouro1,init_x,init_y,&x,&y,mapa1);
+        if(ouro1==1)
+            break;
+        movimentacao2(&hp2,&ouro2,init_w,init_z,&w,&z,mapa1);
+    }
+    if(ouro1 == 1 || hp2 == 0)
+    {
+        messages(4,1);
+    }
+    else if(ouro2 == 1 || hp1 == 0)
+    {
+        messages(4,2);
     }
 }
 
@@ -826,6 +869,9 @@ int main()
     menu(&user);
     if(user == 'a' || user == 'A')
         map();
+    user=='c';
+    menu(&user);
+    putchar('\n');
     system("pause");
     return 1;
 }
