@@ -406,7 +406,7 @@ void movimentacao1(int *hp1,int *ouro1,int init_x,int init_y, int *x,int *y,int 
                 if(tecla1 == 'a' || tecla1 == 'A')
                 {
                     (*y)--;
-                    if(mapa1[(*x)][(*y)]==0)
+                    if(mapa1[(*x)][(*y)]==8)
                     {  (*y)++;
                         passos++;
                     }
@@ -453,7 +453,7 @@ void movimentacao1(int *hp1,int *ouro1,int init_x,int init_y, int *x,int *y,int 
                 if(tecla1 == 'd' || tecla1 == 'D')
             {
                 (*y)++;
-                if(mapa1[(*x)][(*y)]==0)
+                if(mapa1[(*x)][(*y)]==8)
                 {  (*y)--;
                     passos++;
                 }
@@ -573,7 +573,7 @@ void movimentacao2(int *hp2, int *ouro2,int init_x,int init_y, int *x,int *y,int
 		 */
                 if(tecla1 == 5)
                 {   (*x)++;
-                    if(mapa1[(*x)][(*y)]==8)
+                    if(mapa1[(*x)][(*y)]==0)
                     {   (*x)--;
                         passos++;
                     }
@@ -620,7 +620,7 @@ void movimentacao2(int *hp2, int *ouro2,int init_x,int init_y, int *x,int *y,int
                 if(tecla1 == 4)
                 {
                     (*y)--;
-                    if(mapa1[(*x)][(*y)]==0)
+                    if(mapa1[(*x)][(*y)]==8)
                     {  (*y)++;
                         passos++;
                     }
@@ -665,7 +665,7 @@ void movimentacao2(int *hp2, int *ouro2,int init_x,int init_y, int *x,int *y,int
                 if(tecla1 == 6)
                 {
                     (*y)++;
-                    if(mapa1[(*x)][(*y)]==0)
+                    if(mapa1[(*x)][(*y)]==8)
                     {  (*y)--;
                         passos++;
                     }
@@ -843,6 +843,8 @@ void map()
     }*/
 	init_x=x;   init_y=y;   init_w = w; init_z=z;
 /*  Enviar o init_x e etc como argumento para o procedimento show_map(), para mostrar onde os jogadores escolheram iniciar */
+    mapa1[init_x][init_y]=5;
+    mapa1[init_w][init_z]=6;
 	while(ouro1 < 1 && ouro2 < 1 && hp1 > 0 && hp2 > 0)
 	{
 	    show_map(mapa1);
