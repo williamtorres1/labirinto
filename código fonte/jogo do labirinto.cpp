@@ -132,7 +132,6 @@ void show_map(int mapa2[12][12])
        41 --- TESOURO REVELADO
        44 --- TESOURO ENCONTRADO
     **/
-   // putchar('\t');
     for(int i=0;i<12;i++)
     {
         for(int j=0;j<12;j++)
@@ -173,44 +172,61 @@ void show_map(int mapa2[12][12])
                 {
                     printf("FOGO");
                     {   if(mapa2[i][j]==31)
-                        printf("FOGO");
-                    if(mapa2[i+1][j]==1)
-                        mapa2[i+1][j]=7;
-                    else if(mapa2[i+1][j]==3)
-                        mapa2[i+1][j]=31;
-                    else if(mapa2[i+1][j]==2)
-                        mapa2[i+1][j]=21;
-                    else if(mapa2[i+1][j]==4)
-                        mapa2[i+1][j]=41;
+                        	printf("FOGO");
+		 /**	Algoritmo para a posicao abaixo da tocha.
+		  **	Este algoritmo tera sua logica seguida nos proximos algoritmos abaixo, o que dispensara comentarios enormes. */
+		 
+		/**	Para mostrar ao usuario o que sera revelado, antes o programa devera saber o que tem naquele elemento da matriz.
+		 **	Sendo assim, precisamos de um if para cada probabilidade de elemento.	*/
+		     
+                    	if(mapa2[i+1][j]==1)
+		/**	Se naquele elemento nao possuir nada alem de um espaco vazio, entao aquela posicao ira receber 7(ESPACO VAZIO).	*/
+                        	mapa2[i+1][j]=7;
+		     
+                    	else if(mapa2[i+1][j]==3)
+		/**	Se for outra tocha, entao iremos alterar aquele elemento de 3 para 31.
+		 **	(3 referencia-se a uma tocha, e 1 referencia-se que aquele elemento foi revelado).
+		 **	Ou seja, passa de uma tocha escondida, para uma tocha revelada aos jogadores.	*/				
+                        	mapa2[i+1][j]=31;
+		     
+                    	else if(mapa2[i+1][j]==2)
+		/**	Se for uma armadilha, o novo valor do elemento passara de 2 para 21.
+		 **	Ou seja, passa de uma armadilha escondida, para uma armadilhada revelada aos jogadores.	*/				
+	                        mapa2[i+1][j]=21;
+		     
+        	        else if(mapa2[i+1][j]==4)
+		/**	Se for o tesouro a ser revelado, o valor passara de 4, para 41.
+		 **	Ou seja, passa de tesouro escondido, para tesouro revelado a todos os jogadores.	*/
+                	        mapa2[i+1][j]=41;//Fim do algoritmo para a posicao abaixo da tocha.
+		/**	A seguir, eh a mesma logica apresentada anteriormente.
+		 **	Com a diferenca de que teremos de alterar os valores em i ou j
+		 **	para verificar o que aquele elemento contém.	*/
+                    	if(mapa2[i-1][j]==1)
+                        	mapa2[i-1][j]=7;
+                    	else if(mapa2[i-1][j]==3)
+                        	mapa2[i-1][j]=31;
+                    	else if(mapa2[i-1][j]==2)
+                        	mapa2[i-1][j]=21;
+                    	else if(mapa2[i-1][j]==4)
+                        	mapa2[i-1][j]=41;
+		     
+                   	if(mapa2[i][j+1]==1)
+                        	mapa2[i][j+1]=7;
+                   	else if(mapa2[i][j+1]==2)
+                        	mapa2[i][j+1]=21;
+                   	else if(mapa2[i][j+1]==3)
+                        	mapa2[i][j+1]=31;
+                   	else if(mapa2[i][j+1]==4)
+                        	mapa2[i][j+1]=41;
 
-
-                    if(mapa2[i-1][j]==1)
-                        mapa2[i-1][j]=7;
-                    else if(mapa2[i-1][j]==3)
-                        mapa2[i-1][j]=31;
-                    else if(mapa2[i-1][j]==2)
-                        mapa2[i-1][j]=21;
-                    else if(mapa2[i-1][j]==4)
-                        mapa2[i-1][j]=41;
-
-
-                   if(mapa2[i][j+1]==1)
-                        mapa2[i][j+1]=7;
-                   else if(mapa2[i][j+1]==2)
-                        mapa2[i][j+1]=21;
-                   else if(mapa2[i][j+1]==3)
-                        mapa2[i][j+1]=31;
-                   else if(mapa2[i][j+1]==4)
-                        mapa2[i][j+1]=41;
-
-                    if(mapa2[i][j-1]==1)
-                        mapa2[i][j-1]=7;
-                    else if(mapa2[i][j-1]==2)
-                        mapa2[i][j-1]=21;
-                    else if(mapa2[i][j-1]==3)
-                        mapa2[i][j-1]=31;
-                    else if(mapa2[i][j-1]==4)
-                        mapa2[i][j-1]=41;
+                    	if(mapa2[i][j-1]==1)
+                        	mapa2[i][j-1]=7;
+                    	else if(mapa2[i][j-1]==2)
+                        	mapa2[i][j-1]=21;
+	                    else if(mapa2[i][j-1]==3)
+        	                mapa2[i][j-1]=31;
+                	    else if(mapa2[i][j-1]==4)
+                        	mapa2[i][j-1]=41;
                     }
                 }
         }
@@ -242,13 +258,13 @@ Foi criada uma funcao, para os elementos nao alterarem durante a execucao do pro
                 {
                     where_trap=rand()%101;
                 }while(where_trap>101);
-                //Quando sortear um valor entre 0 e 100, ir� fazer a an�lise abaixo
-                //Para uma trap ser colocada em um elemento da matriz, o numero sorteado precisa ser entre 0 e 25
-                //O numero de traps colocadas nao deve exceder o numero sorteado de traps
+                /** Quando sortear um valor entre 0 e 100, ira fazer a analise abaixo.
+                 ** Para uma trap ser colocada em um elemento da matriz, o numero sorteado precisa ser entre 0 e 25.
+                 ** O numero de traps colocadas nao deve exceder o numero sorteado de traps.	*/
                 if(where_trap <= 25 && where_trap > 0 && trap < num_trap && mapa1[i][j] == 1)
                 {
                     //Sendo tudo verdadeiro, colocaremos a tocha naquela posicao e adicionaremos +1 na variavel trap
-                    //ou seja, o loop nao precisara ser realizado mais alguma vez
+                    //ou seja, nao teremos mais armadilhas posicionadas acima do numero sorteado.
                     mapa1[i][j]=2;
                     trap++;
                 }
@@ -263,13 +279,13 @@ Foi criada uma funcao, para os elementos nao alterarem durante a execucao do pro
             {do      //laco para sortear a chance de cair uma tocha num elemento da matriz nao podendo exceder 100
                 {where_tocha=rand()%101;
                 }while(where_tocha>101);
-                /**Quando sortear um valor entre 0 e 100, irao fazer a analise abaixo**/
-                /**Para uma tocha ser colocada em um elemento da matriz, o numero sorteado precisa ser entre 0 e 15
-                  O numero tochas colocadas nao deve exceder o numero sorteado de tochas
-                  E nao pode colocar uma tocha se j� colocarmos uma tocha antes naquele local*/
+                /** Quando sortear um valor entre 0 e 100, irao fazer a analise abaixo	**/
+                /** Para uma tocha ser colocada em um elemento da matriz, o numero sorteado precisa ser entre 0 e 15.
+                 ** O numero tochas colocadas nao deve exceder o numero sorteado de tochas.
+                 ** E nao pode colocar uma tocha se ja colocarmos uma tocha antes naquele local.	*/
                 if(where_tocha <= 15 && where_tocha > 0 && tochas < num_tocha && mapa1[i][j] == 1)
                 {   /**Sendo tudo verdadeiro, colocaremos a tocha naquela posicao e adicionaremos +1 na variavel tochas
-                       ou seja, o loop nao precisaria ser realizado mais alguma vez**/
+                       ou seja, nao teremos mais tochas posicionadas acima do numero sorteado.**/
                     mapa1[i][j]=3;
                     tochas++;
                 }
@@ -282,16 +298,22 @@ Foi criada uma funcao, para os elementos nao alterarem durante a execucao do pro
         		{
 				do
                 {where_ouro=rand()%101;
-                }while(where_ouro>101);
+                }while(where_ouro>101);//laco para sortear a chance de cair uma tocha num elemento da matriz nao podendo exceder 100
                 if(where_ouro == 1 && ouro < 1 && mapa1[i][j] == 1)
-                    {   mapa1[i][j]=4;
-                        ouro++;
+                    {/** Para posicionarmos o tesouro em um determinado local na matriz, o valor sorteado precisa ser 1(1%).
+		      ** Nao pode ter sido colocada nenhum outro tesouro em qualquer outro lugar da matriz.
+		      ** E nao pode conter nada naquele elemento. Ou seja, nao teremos nenhum elemento sobreescrevido.	*/
+			 mapa1[i][j]=4;
+                         ouro++;
                     }
                 }
 	}while(ouro<1);
 }
 
-void HP_system(int *hp1, int *hp2)
+void HP_system(int *hp1, int *hp2)//Em traducao livre = Sistema de pontos de vida
+/** Funcao p/ atualizar e mostrar a quantidade atual de HP dos jogadores.
+ ** Foi criada esta funcao, pois se fossemos utilizar a funcao messages( ), precisariamos trabalhar com mais e mais ponteiros -
+ ** E ficaria muito mais complicado visualmente para realizar, mas sendo possivel.	*/
 {
     printf("\n***Player I*** \t\t\t***Player II***\n **HP:%d/5** \t\t\t **HP:%d/5**\n",*hp1,*hp2);
 }
@@ -314,8 +336,9 @@ void movimentacao1(int *hp1, int *hp2,int *ouro, int *x,int *y,int mapa1[][12])
 /** Quando a variavel passos chegar em 0, termina o laco e o termina o turno
     Ou se o jogador encontrar o ouro tambem terminara o laco    */
         {   tecla1=getch();
-            // Se lembra da variavel que ia pegar w,a,s,d? pronto aqui � onde ela recebe o valor
-            /******Com o valor adquirido voce tera 4 ifs diferentes, 1 pra cada letra.******/
+            // Se lembra da variavel que ia pegar w,a,s,d? pronto aqui eh onde ela recebe o valor
+            
+	    /******Com o valor adquirido voce tera 4 ifs diferentes, 1 pra cada letra.******/
 
             if(tecla1 == 'w' || tecla1 == 'W' || tecla1 == 's' || tecla1 == 'S' || tecla1 == 'a' || tecla1 == 'A' || tecla1 == 'd' || tecla1 == 'D')
             {
@@ -754,7 +777,7 @@ void map()
 /*  user1 e user2 = Variaveis para fazer os jogadores escolherem onde irao comecar a jogar */
     int ouro=0;
 /** Variaveis para encerrar o jogo */
-/** Iremos enviar o endereco da variavel 'ouro' para os dois jogadores.
+/** Iremos enviar o endereco da variavel 'ouro' para a funcao de movimentacao dos dois jogadores.
  ** Se o Jogador I encontrar o tesouro, a variavel recebe 1.
  ** Se o Jogador II encontrar o tesouro, a variavel recebe 2.           */
     int hp1=5,hp2=5;
@@ -790,11 +813,10 @@ void map()
 */
     };
     distribuicao(mapa1);
-	//escolha_player(1);
+    system("cls");
+    escolha_player(1);	
 /** Este eh o procedimento somente para mostrar o mapa ao jogador, escolhi criar ele, porque estava ocupando muitas linhas
     O numero (1) como argumento eh p/ as mensagens serem direcionadas ao player I           */
-    system("cls");
-    escolha_player(1);
     scanf("%d",&user1);//user1=getch() - '0';
 /** Se o player I escolher algumnumero entre 1 e 4, ira alterar as variaveis x e y(Coordendas do jogador I)
     */
@@ -852,14 +874,10 @@ void map()
     else    if(user2 != 1 || user2 != 2 || user2 != 3 || user2 != 4 || user2==user1)
     {   w=1;
         z=10;
-    }/*
-    if(user1==2 && user2 != 1 || user2 != 2 || user2 != 3 || user2 != 4)
-    {
-        w=1;
-        z=1;
-    }*/
+    }
 	init_x=x;   init_y=y;   init_w = w; init_z=z;
-/*  Enviar o init_x e etc como argumento para o procedimento show_map(), para mostrar onde os jogadores escolheram iniciar */
+/*  O init_x e etc ja ira por os jogadores em suas posicoes iniciais.
+ *  (A posicao escolhida pelo Jogador II so aparecia ao comeco do seu primeiro turno).	*/
     mapa1[init_x][init_y]=5;
     mapa1[init_w][init_z]=6;
 	while(ouro != 1 && ouro != 2 && hp1 > 0 && hp2 > 0)
