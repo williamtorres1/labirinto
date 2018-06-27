@@ -9,7 +9,7 @@
 #include <windows.h>//""p/ funcao sleep(1) - esperar algum tempo e o programa voltar a executar as proximas linhas
 
 void menu(char *user)
-{   printf("\t\tBem-vindo ao caca ao tesouro!\n\na) --- Comecar a jogar\nb) --- Creditos\nc) --- Sair\nd) --- Ir a marte\n");
+{   printf("\t\tBem-vindo ao caca ao tesouro!\n\na) --- Comecar a jogar\nb) --- Creditos\nc) --- Ir a marte\nd) --- Ajuda\ne) --- Sair");
     *user=getch();
     switch(*user)
     {   case 'a':
@@ -17,7 +17,7 @@ void menu(char *user)
             {   system("cls");
                 printf("Processando sua resposta...");
                 Sleep(500);
-                printf("\n\t\t\tEntao vamos comecar");
+                printf("\n\n\t\t\tEntao vamos comecar");
                 Sleep(500);
                 system("cls");
                 printf("\n\n\t\t\t****Comecou****\n");
@@ -37,18 +37,27 @@ void menu(char *user)
             }
         case 'c':
         case 'C':
-            {   printf("E triste ve-lo partir:/ \nAte mais...\n");
-                Sleep(1500);
-                system("cls");
-                printf("Encerrando...\n\n");
+            {   system("cls");
+                printf("Processando sua resposta...");
+                Sleep(500);
+                printf("\nLamento, ainda nao e possivel\n");
+                printf("Quem sabe em 2030?\n");
+                system("pause");
                 break;
             }
         case 'd':
         case 'D':
-            {   printf("Processando sua resposta...");
-                Sleep(500);
-                printf("\nLamento, ainda nao e possivel\n");
-                printf("Quem sabe em 2030?\n");
+            {   system("cls");
+                printf("Esta aba sera uma guia de instrucoes aos jogadores:\n1)Como Jogar\n2)Teclas usadas pelos jogadores\n\n");
+                system("pause");
+                break;
+            }
+        case 'e':
+        case 'E':
+            {   printf("E triste ve-lo partir:/ \nAte mais...\n");
+                Sleep(1500);
+                system("cls");
+                printf("Encerrando...\n\n");
                 break;
             }
         default:
@@ -123,10 +132,12 @@ void show_map(int mapa2[12][12])
        41 --- TESOURO REVELADO
        44 --- TESOURO ENCONTRADO
     **/
+   // putchar('\t');
     for(int i=0;i<12;i++)
     {
         for(int j=0;j<12;j++)
         {
+            //putchar('\t');
             if(mapa2[i][j]==0)
                 printf(" == ");
             if(mapa2[i][j]==1||mapa2[i][j]==2||mapa2[i][j]==3||mapa2[i][j]==4)
@@ -139,10 +150,10 @@ void show_map(int mapa2[12][12])
                 {printf("FOGO");
                 /*mapa2[i][j]=31;*/}
             if(mapa2[i][j]==41)
-               printf("GOLD");
+               printf("OURO");
 
             if(mapa2[i][j]==44)
-               printf("GOLD");
+               printf("OURO");
             if(mapa2[i][j]==5)
                 printf(" P1 ");
             if(mapa2[i][j]==6)
@@ -160,7 +171,7 @@ void show_map(int mapa2[12][12])
 *           Estava com alguns bugs gráficos */
             if(mapa2[i][j]==33)
                 {
-                    printf("FIRE");
+                    printf("FOGO");
                     {   if(mapa2[i][j]==31)
                         printf("FOGO");
                     if(mapa2[i+1][j]==1)
@@ -205,7 +216,6 @@ void show_map(int mapa2[12][12])
         }
         putchar('\n');
     }
-    //messages(5,0);
 }
 
 void distribuicao(int mapa1[][12])/**Funcao p/ distribuir as armadilhas, tochas e o ouro dentro do mapa
@@ -340,7 +350,7 @@ void movimentacao1(int *hp1, int *hp2,int *ouro, int *x,int *y,int mapa1[][12])
                     if(mapa1[(*x)][(*y)]==4 || mapa1[(*x)][(*y)]== 41)
                     {   mapa1[*x][*y]=44;
                         mapa1[((*x)+1)][(*y)]=7;
-                        *ouro++;
+                        *ouro=1;
                         break;
                     }
                     if(mapa1[(*x)][(*y)]==6)
@@ -877,14 +887,16 @@ int main()
 {
     /**srand(time(NULL));//Enquanto o programa nao estiver pronto, deixe esta linha do jeito que esta
         Esta linha vai deixar os elementos da matriz totalmente aleatorios              */
-    char user=0;
+    char user='0';
     do
     {   fflush(stdin);
         system("cls");
         menu(&user);
         if(user == 'a' || user == 'A')
             map();
-    }while( user != 'c' || user != 'C');
+        if(user == 'e' || user == 'E')
+            break;
+    }while(1);
     putchar('\n');
     system("pause");
     return 1;
