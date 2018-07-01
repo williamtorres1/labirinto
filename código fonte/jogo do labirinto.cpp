@@ -336,7 +336,7 @@ Foi criada uma funcao, para os elementos nao alterarem durante a execucao do pro
                 if(where_tocha <= 15 && where_tocha > 0 && tochas < num_tocha && mapa1[i][j] == 1)
                 {   /**Sendo tudo verdadeiro, colocaremos a tocha naquela posicao e adicionaremos +1 na variavel tochas
                        ou seja, o loop nao precisaria ser realizado mais alguma vez**/
-                    mapa1[i][j]=31;
+                    mapa1[i][j]=3;
                     tochas++;
                 }
             }
@@ -802,7 +802,7 @@ void movimentacao2(int *hp1,int *hp2, int *ouro, int *x,int *y,int mapa1[][12])
                 }
                 if(mapa1[(*x)][(*y)]==7)
                 {
-                    mapa1[(*x)][(*y)]=5;
+                    mapa1[(*x)][(*y)]=6;
                     mapa1[(*x)][(*y)-1]=7;
                 }
                 if(mapa1[(*x)][(*y)]==9)
