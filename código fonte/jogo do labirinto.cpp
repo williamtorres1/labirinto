@@ -731,7 +731,7 @@ void movimentacao2(int *hp1,int *hp2, int *ouro, int *x,int *y,int mapa1[][12])
         }
         }
 }
-
+printf("oi");
 void escolha_player(int player)
 {
     printf("Jogador %d, onde deseja comecar a jogar?\n",player);
