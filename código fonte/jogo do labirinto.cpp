@@ -150,7 +150,6 @@ void show_map(int mapa2[12][12])
                 printf("FOGO");
             if(mapa2[i][j]==41)
                printf("OURO");
-
             if(mapa2[i][j]==44)
                printf("OURO");
             if(mapa2[i][j]==5)
@@ -165,57 +164,124 @@ void show_map(int mapa2[12][12])
                 printf(" <> ");
             if(mapa2[i][j]==10)
                 printf("P1P2");
-
-/**         ALGORITMO DA TOCHA      *
-*           Foi colocado abaixo de todos os outros if's, para evitar erros no comportamento da matriz.
-*           Estava com alguns bugs gráficos */
-            if(mapa2[i][j]==33)
-                {
-                    printf("FOGO");
-                    {   if(mapa2[i][j]==31)
-                        printf("FOGO");
-                    if(mapa2[i+1][j]==1)
-                        mapa2[i+1][j]=7;
-                    else if(mapa2[i+1][j]==3)
-                        mapa2[i+1][j]=31;
-                    else if(mapa2[i+1][j]==2)
-                        mapa2[i+1][j]=21;
-                    else if(mapa2[i+1][j]==4)
-                        mapa2[i+1][j]=41;
-
-
-                    if(mapa2[i-1][j]==1)
-                        mapa2[i-1][j]=7;
-                    else if(mapa2[i-1][j]==3)
-                        mapa2[i-1][j]=31;
-                    else if(mapa2[i-1][j]==2)
-                        mapa2[i-1][j]=21;
-                    else if(mapa2[i-1][j]==4)
-                        mapa2[i-1][j]=41;
-
-
-                   if(mapa2[i][j+1]==1)
-                        mapa2[i][j+1]=7;
-                   else if(mapa2[i][j+1]==2)
-                        mapa2[i][j+1]=21;
-                   else if(mapa2[i][j+1]==3)
-                        mapa2[i][j+1]=31;
-                   else if(mapa2[i][j+1]==4)
-                        mapa2[i][j+1]=41;
-
-                    if(mapa2[i][j-1]==1)
-                        mapa2[i][j-1]=7;
-                    else if(mapa2[i][j-1]==2)
-                        mapa2[i][j-1]=21;
-                    else if(mapa2[i][j-1]==3)
-                        mapa2[i][j-1]=31;
-                    else if(mapa2[i][j-1]==4)
-                        mapa2[i][j-1]=41;
-                    }
-                }
         }
         putchar('\n');
     }
+}
+
+void tocha(int *x,int *y,int mapa2[][12])
+{
+    /**     *****   ALGORITMO DA TOCHA  *****
+    *           Foi colocado abaixo de todos os outros if's, para evitar erros no comportamento da matriz.
+    *           Estava com alguns bugs gráficos                                                 */
+    int i,j;
+    i=*x;
+    j=*y;
+            if(mapa2[i][j]==33)
+                {
+                    printf("FOGO");
+                    mapa2[i][j]=31;
+                /** Abaixo do jogador   */
+                    i++;
+                    if(mapa2[i][j]==1)
+                        mapa2[i][j]=7;
+                    if(mapa2[i][j]==7)
+                        mapa2[i][j]=7;
+                    if(mapa2[i][j]==3 || mapa2[i][j]==31)
+                        mapa2[i][j]=31;
+                    if(mapa2[i][j]==2 || mapa2[i][j]==21)
+                        mapa2[i][j]=21;
+                    if(mapa2[i][j]==4 || mapa2[i][j]==41)
+                        mapa2[i][j]=41;
+                    if(mapa2[i][j]==0)
+                        mapa2[i][j]=0;
+                    if(mapa2[i][j]==8)
+                        mapa2[i][j]=8;
+                    if(mapa2[i][j]==5)
+                        mapa2[i][j]=5;
+                    if(mapa2[i][j]==6)
+                        mapa2[i][j]=6;
+                    if(mapa2[i][j]==9)
+                        mapa2[i][j]=9;
+                    if(mapa2[i][j]==10)
+                        mapa2[i][j]=10;
+                    i--;
+            /** Em cima do jogador  */
+                    i--;
+                    if(mapa2[i][j]==1)
+                        mapa2[i][j]=7;
+                    if(mapa2[i][j]==7)
+                        mapa2[i][j]=7;
+                    if(mapa2[i][j]==3 || mapa2[i][j]==31)
+                        mapa2[i][j]=31;
+                    if(mapa2[i][j]==2 || mapa2[i][j]==21)
+                        mapa2[i][j]=21;
+                    if(mapa2[i][j]==4 || mapa2[i][j]==41)
+                        mapa2[i][j]=41;
+                    if(mapa2[i][j]==0)
+                        mapa2[i][j]=0;
+                    if(mapa2[i][j]==8)
+                        mapa2[i][j]=8;
+                    if(mapa2[i][j]==5)
+                        mapa2[i][j]=5;
+                    if(mapa2[i][j]==6)
+                        mapa2[i][j]=6;
+                    if(mapa2[i][j]==9)
+                        mapa2[i][j]=9;
+                    if(mapa2[i][j]==10)
+                        mapa2[i][j]=10;
+                    i++;
+                /** A esquerda do jogador  */
+                    j++;
+                    if(mapa2[i][j]==1)
+                        mapa2[i][j]=7;
+                    if(mapa2[i][j]==7)
+                        mapa2[i][j]=7;
+                    if(mapa2[i][j]==3 || mapa2[i][j]==31)
+                        mapa2[i][j]=31;
+                    if(mapa2[i][j]==2 || mapa2[i][j]==21)
+                        mapa2[i][j]=21;
+                    if(mapa2[i][j]==4 || mapa2[i][j]==41)
+                        mapa2[i][j]=41;
+                    if(mapa2[i][j]==0)
+                        mapa2[i][j]=0;
+                    if(mapa2[i][j]==8)
+                        mapa2[i][j]=8;
+                    if(mapa2[i][j]==5)
+                        mapa2[i][j]=5;
+                    if(mapa2[i][j]==6)
+                        mapa2[i][j]=6;
+                    if(mapa2[i][j]==9)
+                        mapa2[i][j]=9;
+                    if(mapa2[i][j]==10)
+                        mapa2[i][j]=10;
+                    j--;
+                /** A DIREITA do jogador  */
+                    j--;
+                    if(mapa2[i][j]==1)
+                        mapa2[i][j]=7;
+                    if(mapa2[i][j]==7)
+                        mapa2[i][j]=7;
+                    if(mapa2[i][j]==3 || mapa2[i][j]==31)
+                        mapa2[i][j]=31;
+                    if(mapa2[i][j]==2 || mapa2[i][j]==21)
+                        mapa2[i][j]=21;
+                    if(mapa2[i][j]==4 || mapa2[i][j]==41)
+                        mapa2[i][j]=41;
+                    if(mapa2[i][j]==0)
+                        mapa2[i][j]=0;
+                    if(mapa2[i][j]==8)
+                        mapa2[i][j]=8;
+                    if(mapa2[i][j]==5)
+                        mapa2[i][j]=5;
+                    if(mapa2[i][j]==6)
+                        mapa2[i][j]=6;
+                    if(mapa2[i][j]==9)
+                        mapa2[i][j]=9;
+                    if(mapa2[i][j]==10)
+                        mapa2[i][j]=10;
+                    j++;
+                }
 }
 
 void distribuicao(int mapa1[][12])/**Funcao p/ distribuir as armadilhas, tochas e o ouro dentro do mapa
@@ -346,6 +412,8 @@ void movimentacao1(int *hp1, int *hp2,int *ouro, int *x,int *y,int mapa1[][12])
                     if(mapa1[(*x)][(*y)]==3 || mapa1[(*x)][(*y)]==31)
                     {   mapa1[*x][*y]=33;
                         mapa1[((*x)+1)][(*y)]=7;
+                        messages(3,1);
+                        tocha(x,y,mapa1);
                     }
                     if(mapa1[(*x)][(*y)]==4 || mapa1[(*x)][(*y)]== 41)
                     {   mapa1[*x][*y]=44;
@@ -395,6 +463,8 @@ void movimentacao1(int *hp1, int *hp2,int *ouro, int *x,int *y,int mapa1[][12])
                     if(mapa1[(*x)][(*y)]==3 || mapa1[(*x)][(*y)]==31)
                     {   mapa1[*x][*y]=33;
                         mapa1[((*x)-1)][(*y)]=7;
+                        messages(3,1);
+                        tocha(x,y,mapa1);
                     }
                     if(mapa1[(*x)][(*y)]==4 || mapa1[(*x)][(*y)]==41)
                     {   mapa1[*x][*y]=44;
@@ -444,6 +514,8 @@ void movimentacao1(int *hp1, int *hp2,int *ouro, int *x,int *y,int mapa1[][12])
                     if(mapa1[(*x)][(*y)]==3 || mapa1[(*x)][(*y)]==31)
                     {   mapa1[*x][*y]=33;
                         mapa1[((*x))][(*y)+1]=7;
+                        messages(3,1);
+                        tocha(x,y,mapa1);
                     }
                     if(mapa1[(*x)][(*y)]==4 || mapa1[(*x)][(*y)]==41)
                     {   mapa1[*x][*y]=44;
@@ -491,6 +563,8 @@ void movimentacao1(int *hp1, int *hp2,int *ouro, int *x,int *y,int mapa1[][12])
                 if(mapa1[(*x)][(*y)]==3 || mapa1[(*x)][(*y)]==31)
                 {   mapa1[*x][*y]=33;
                     mapa1[((*x))][(*y)-1]=7;
+                    messages(3,1);
+                    tocha(x,y,mapa1);
                 }
                 if(mapa1[(*x)][(*y)]==4 || mapa1[(*x)][(*y)]==41)
                 {   mapa1[*x][*y]=44;
@@ -565,11 +639,14 @@ void movimentacao2(int *hp1,int *hp2, int *ouro, int *x,int *y,int mapa1[][12])
                     if(mapa1[(*x)][(*y)]==3 || mapa1[(*x)][(*y)]== 31)
                     {   mapa1[*x][*y]=33;
                         mapa1[((*x)+1)][(*y)]=7;
+                        messages(3,2);
+                        tocha(x,y,mapa1);
                     }
                     if(mapa1[(*x)][(*y)]==4 || mapa1[(*x)][(*y)]== 41)
                     {   mapa1[*x][*y]=44;
                         mapa1[((*x)+1)][(*y)]=7;
                         *ouro=2;
+                        break;
                     }
                     if(mapa1[(*x)][(*y)]==5)
                     {   mapa1[*x][*y]=10;
@@ -610,11 +687,14 @@ void movimentacao2(int *hp1,int *hp2, int *ouro, int *x,int *y,int mapa1[][12])
                     if(mapa1[(*x)][(*y)]==3 || mapa1[(*x)][(*y)]== 31)
                     {   mapa1[*x][*y]=33;
                         mapa1[((*x)-1)][(*y)]=7;
+                        messages(3,2);
+                        tocha(x,y,mapa1);
                     }
-                    if(mapa1[(*x)][(*y)]==4 || mapa1[(*x)][(*y)]==4)
+                    if(mapa1[(*x)][(*y)]==4 || mapa1[(*x)][(*y)]==41)
                     {   mapa1[*x][*y]=44;
                         mapa1[((*x)-1)][(*y)]=7;
                         *ouro=2;
+                        break;
                     }
                     if(mapa1[(*x)][(*y)]==5)
                     {   mapa1[*x][*y]=10;
@@ -658,11 +738,14 @@ void movimentacao2(int *hp1,int *hp2, int *ouro, int *x,int *y,int mapa1[][12])
                     if(mapa1[(*x)][(*y)]==3 || mapa1[(*x)][(*y)]==31)
                     {   mapa1[*x][*y]=33;
                         mapa1[((*x))][(*y)+1]=7;
+                        messages(3,2);
+                        tocha(x,y,mapa1);
                     }
-                    if(mapa1[(*x)][(*y)]==4 || mapa1[(*x)][(*y)]==4)
+                    if(mapa1[(*x)][(*y)]==4 || mapa1[(*x)][(*y)]==41)
                     {   mapa1[*x][*y]=44;
                         mapa1[((*x))][(*y)+1]=7;
                         *ouro=2;
+                        break;
                     }
                     if(mapa1[(*x)][(*y)]==5)
                     {   mapa1[*x][*y]=10;
@@ -704,11 +787,14 @@ void movimentacao2(int *hp1,int *hp2, int *ouro, int *x,int *y,int mapa1[][12])
                 if(mapa1[(*x)][(*y)]==3 || mapa1[(*x)][(*y)]==31)
                 {   mapa1[*x][*y]=33;
                     mapa1[((*x))][(*y)-1]=7;
+                    messages(3,2);
+                    tocha(x,y,mapa1);
                 }
                 if(mapa1[(*x)][(*y)]==4 || mapa1[(*x)][(*y)]==41)
                 {   mapa1[*x][*y]=44;
                     mapa1[((*x))][(*y)-1]=7;
                     *ouro=2;
+                    break;
                 }
                 if(mapa1[(*x)][(*y)]==5)
                 {   mapa1[*x][*y]=10;
@@ -731,7 +817,7 @@ void movimentacao2(int *hp1,int *hp2, int *ouro, int *x,int *y,int mapa1[][12])
         }
         }
 }
-printf("oi");
+
 void escolha_player(int player)
 {
     printf("Jogador %d, onde deseja comecar a jogar?\n",player);
