@@ -20,18 +20,10 @@ void menu(char *user)
             {   system("cls");
                 printf("Processando sua resposta...");
                 system("cls");
-                printf("\n\n\nEste software foi desenvolvido por:\nWilliam Torres\tGuilherme Vinícius\tEvelyn Luisy\tAlan Soares\tAngelo D'angelo\n");
+                printf("\n\n\nEste software foi desenvolvido por:\nWilliam Torres\n");
                 printf("GitHub:    github.com/williamtorres1\n");
-				printf("GitHub:    github.com/Swagmaster696969\n");
                 printf("Facebook:  facebook.com/williamtorres.4\n");
-				printf("Facebook:  facebook.com/evelyn.luysi\n");
-				printf("Facebook:  facebook.com/AlanSooaares\n");
-				printf("Facebook:  facebook.com/angelo.d.silva.54\n");
-                printf("Instagram: instagram.com/williamtoorres\n");
-				
-				
-
-				
+                printf("Instagram: instagram.com/williamtoorres\n");	
                 system("pause");
                 break;
             }
@@ -48,9 +40,9 @@ void menu(char *user)
         case 'd':
         case 'D':
             {   system("cls");
-				printf("Esta aba e uma guia de instrucoes aos jogadores.\n");
-				printf("\n1)Como Jogar\nVoce e outro jogador devem escolher o local de saida, apos o inicio do jogo, voce deve se movimentar para encontrar o tesouro primeiro! Mas tome cuidado pelo caminho que anda ;D\n");
-				printf("\n2)Teclas usadas pelo jogador 1\nMovimentacao --- W(cima), A(esquerda), S(baixo), D(direita).\nTeclas usadas pelo jogador 2\nMovimentacao --- 8(cima), 4(esquerda), 5(baixo), 6(direita).\n\n");
+		printf("Esta aba e uma guia de instrucoes aos jogadores.\n");
+		printf("\n1)Como Jogar\nVoce e outro jogador devem escolher o local de saida, apos o inicio do jogo, voce deve se movimentar para encontrar o tesouro primeiro! Mas tome cuidado pelo caminho que anda ;D\n");
+		printf("\n2)Teclas usadas pelo jogador 1\nMovimentacao --- W(cima), A(esquerda), S(baixo), D(direita).\nTeclas usadas pelo jogador 2\nMovimentacao --- 8(cima), 4(esquerda), 5(baixo), 6(direita).\n\n");
                 system("pause");
                 break;
             }
