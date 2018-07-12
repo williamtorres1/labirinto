@@ -4,7 +4,7 @@ void messages(int situacao,int player)/**Funcao p/ Mostrar todas as mensagens ao
 Necessita de 2 parametros, a mensagem que sera mostrada e a qual jogador ela se refere */
 {   switch(situacao)
 	{	case 1:
-		{   printf("\t\t\tBem-vindo a caca ao Tesouro!\n\n\n");
+		{   printf("\t\t\t\t\tBem-vindo a caca ao Tesouro!\n\n\n");
 			break;
 		}
 		case 2:

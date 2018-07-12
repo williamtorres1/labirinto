@@ -37,6 +37,8 @@ void show_map(int mapa2[12][12])
        33 --- TOCHA ENCONTRADA
        41 --- TESOURO REVELADO
        44 --- TESOURO ENCONTRADO
+       54 --- TESOURO ENCONTRADO PELO PLAYER 1
+       64 --- TESOURO ENCONTRADO PELO PLAYER 2
     **/
     for(int i=0;i<12;i++)
     {
@@ -768,7 +770,7 @@ void map()
     scanf("%d",&user1);//user1=getch() - '0';
 /** Se o player I escolher algumnumero entre 1 e 4, ira alterar as variaveis x e y(Coordendas do jogador I)
     */
-	
+
 if(user1 == 1 || user1 == 2 || user1 == 3 || user1 == 4)
     {   if(user1==1)
         {   x=1;
@@ -815,7 +817,7 @@ if(user1 == 1 || user1 == 2 || user1 == 3 || user1 == 4)
         if(user2==4)
         {   w=10;
             z=10;
-		
+
         }
     }
 	else
