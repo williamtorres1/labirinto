@@ -1,7 +1,7 @@
-/****************************
-*   File:   Saturn Project  *
-*   Author: William Torres  *
-*****************************/
+/************************************
+*   File:   jogo do labirinto.cpp   *
+*   Author: William Torres          *
+*************************************/
 #include <stdio.h>//Biblioteca p/ funcao printf e putchar
 #include <stdlib.h>//"" p/ funcao rand( ) - gerar numeros aleatorios (passos e distribuicaoo das armadilhas, tochas e o tesouro
 #include <conio.h>//""p/ getch ( ) - ler as teclas digitadas pelo usuario, com proposito de faze-lo percorrer o mapa(matriz)
