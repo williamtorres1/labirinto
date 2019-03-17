@@ -9,9 +9,9 @@ Sobre os Jogadores:
 
     1. Cada jogador tem 5 Pontos de Vida(HP).
     2. O jogador 1 utiliza W, A, S, D para mover-se.	
-       ex: W – Move o jogador para cima; A - Move o jogador para a esquerda; S – Move o jogador para a esquerda; D – Move o jogador para a direita.
+       ex: W – Move o jogador para cima; A - Move o jogador para a esquerda; S – Move o jogador para baixo; D – Move o jogador para a direita.
     3. O jogador 2 utiliza 8, 4, 5, 6 para mover-se.	
-       ex: 8 – Move o jogador para cima; 4 - Move o jogador para a esquerda; 5 – Move o jogador para a esquerda; 6 – Move o jogador para a direita.
+       ex: 8 – Move o jogador para cima; 4 - Move o jogador para a esquerda; 5 – Move o jogador para baixo; 6 – Move o jogador para a direita.
 
 Sobre os Elementos:
 
@@ -19,7 +19,7 @@ Sobre os Elementos:
        O jogador perderá 1 Ponto de Vida ao entrar numa armadilha. 
        Após o jogador entrar naquela armadilha, ela desaparece.
        	Ex: Armadilha –> *P1*
-    2. Tocha:	Ilumina um elemento às suas verticais e horizontais. Um elemento à cima, à direita, à esquerda e abaixo serão revelados.
+    2. Tocha: Ilumina um elemento às suas verticais e horizontais. Um elemento à cima, à direita, à esquerda e abaixo serão revelados.
                Ex: Tocha –> &P1&
                
 Objetivos do jogo:
@@ -34,12 +34,12 @@ Mensagens:
 
     1. Abaixo do Mapa, mostrar as informações dos jogadores.
        Ex: PLAYER I		PLAYER II
-              HP: 5/5			HP: 5/5
+           HP: 5/5		HP: 5/5
     2. Ao terminar o turno de um jogador, tem que avisar quem irá jogar posteriormente.
        Ex: Player I pode andar 3 casas –> Player I pode dar mais 2 passos –> Player I Pode dar mais 1 passo.
        Ex: Player II pode andar 7 casas –> Player II pode dar mais 6 passos e etc... 
     3. Ao pisar numa armadilha.
-       Ex: Player I Pisou numa armadilha, perdeu 1 Ponto de Vida(HP).
+       Ex: Player I pisou numa armadilha, perdeu 1 Ponto de Vida(HP).
     4. Ao encontrar uma tocha.
        Ex: Player I encontrou uma tocha.
        
