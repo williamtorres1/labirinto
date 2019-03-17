@@ -13,13 +13,6 @@
 #include "menu.h"//p/ mostrar opcoes iniciais aos jogadores
 #include "messages.h"
 
-/**         PRE-PROCESSAMENTOS      */
-//Somente para o jogador 2
-#define DIREITA     77
-#define ESQUERDA    75
-#define ACIMA       72
-#define ABAIXO      80
-
 void sorteio_passos(int *passos)/**Funcao p/ sortear quantos passos serao realizados pelos jogadores*/
 {	do
 	{
@@ -521,14 +514,14 @@ void movimentacao2(int *hp1,int *hp2, int *ouro, int *x,int *y,int mapa1[][12])
     /** Quando a variavel passos chegar em 0, termina o laco e o termina o turno
     Ou se o jogador encontrar o ouro tambem terminara o laco    */
         {
-            tecla1=getch();
+            tecla1=getch()-'0';
              // Se lembra da variavel que ia pegar 8,4,5,6? pronto aqui ? onde ela recebe o valor
             /******Com o valor adquirido voce tera 4 ifs diferentes 1 pra cada letra.******/
-            if(tecla1 == ACIMA || tecla1 == ABAIXO || tecla1 == ESQUERDA || tecla1 == DIREITA)
+            if(tecla1 == 8 || tecla1 == 5 || tecla1 == 4 || tecla1 == 6)
             {
                 /** Esse eh o if para cima, se queremos que o Player suba devemos mexer no x diminuindo,
                  ** pode parecer confuso, ou n, vc ter que diminuir para subir, mas vai fazer sentido */
-                if(tecla1 == ACIMA)
+                if(tecla1 == 8)
                 {   (*x)--;
                     if(mapa1[(*x)][(*y)]==0)
                     {  (*x)++;
@@ -576,7 +569,7 @@ void movimentacao2(int *hp1,int *hp2, int *ouro, int *x,int *y,int mapa1[][12])
                 }// fim do if cima
 
             /** Ja esse eh o if para descer, seguindo a mesma logica do anterior porem agora aumentando o x		*/
-                if(tecla1 == ABAIXO)
+                if(tecla1 == 5)
                 {   (*x)++;
                     if(mapa1[(*x)][(*y)]==0)
                     {   (*x)--;
@@ -625,7 +618,7 @@ void movimentacao2(int *hp1,int *hp2, int *ouro, int *x,int *y,int mapa1[][12])
 
             /** Esse eh o if para ir para a esquerda como esta
             ** se deslocando na horizontal mexe-se no y, diminuindo */
-                if(tecla1 == ESQUERDA)
+                if(tecla1 == 4)
                 {
                     (*y)--;
                     if(mapa1[(*x)][(*y)]==8)
@@ -675,7 +668,7 @@ void movimentacao2(int *hp1,int *hp2, int *ouro, int *x,int *y,int mapa1[][12])
                 }// fim do if esquerda
 
             /* Esse eh o ultimo if, aponta para a direita, apenas mexemos no y aumentando-o */
-                if(tecla1 == DIREITA)
+                if(tecla1 == 6)
                 {
                     (*y)++;
                     if(mapa1[(*x)][(*y)]==8)
@@ -728,7 +721,7 @@ void movimentacao2(int *hp1,int *hp2, int *ouro, int *x,int *y,int mapa1[][12])
             HP_system(hp1,hp2);
             printf("Player 2 tem mais %d passos...\n",passos);//Mostrar ao jogador quantos passos restantes ele tem
             }
-            if(tecla1 != ACIMA && tecla1 != DIREITA && tecla1 != ESQUERDA && tecla1 != ABAIXO)
+            else
                 printf("\a");
         }
 }
