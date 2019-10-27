@@ -5,9 +5,9 @@ Detalhes sobre projeto para nota da II Unidade
 
 				
 				
-Sobre a Jogabilidade
+Sobre a Jogabilidade:
 					
-	Sobre os Jogadores:
+Jogadores:
 
     1. Cada jogador tem 5 Pontos de Vida(HP).
     2. O jogador 1 utiliza W, A, S, D para mover-se.	
@@ -17,7 +17,7 @@ Sobre a Jogabilidade
        ex: 8 – Move o jogador para cima; 4 - Move o jogador para a esquerda; 5 – Move o jogador para baixo; 
        6 – Move o jogador para a direita.
 
-Sobre os Elementos:
+Elementos:
 
     1. Armadilha: Retira um Ponto de Vida àquele que pisar nela.
        O jogador perderá 1 Ponto de Vida ao entrar numa armadilha. 
