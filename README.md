@@ -72,7 +72,8 @@ Definições dos elementos da matriz
     Em cada elemento da matriz[i][j], testar a chance de 25% de conter uma armadilha(trap) naquele elemento.
        Ex: Se for sorteado qualquer número entre de 1 à 25, colocar uma armadilha.
     4. Tochas(FIRE): 
-    Podem existir até 5 tochas(de 0 à 5). Em cada elemento, testar a possibilidade de 15% de conter uma tocha(fire).
+    Podem existir até 5 tochas(de 0 à 5). 
+    Em cada elemento, testar a possibilidade de 15% de conter uma tocha(fire).
     5. Ex: Se for sorteado qualquer número entre 1 à 15, colocar uma tocha.
        se cair qualquer numero de 1 à 25, colocar um fire.
     6. Tesouro(OURO ou GOLD): 
