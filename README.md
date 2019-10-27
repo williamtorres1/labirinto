@@ -108,8 +108,9 @@ Avaliação
 
 		BÔNUS - para recuperação da primeira unidade
     1. Se o programa permitir que os jogadores escolham onde querem começar a partida, desde que seja um destes 4 pontos.
-        1. Ex:[01][1]			[01][10]
-              [10][1]                   [10][10]
+        1. Ex:
+		[01][1]			[01][10]
+		[10][1]			[10][10]
         2. Detalhe: Nesta versão, o tesouro tem de ficar a partir da linha 2 e até a linha 9.
     2. Se utilizar Mult-Thread: Permitir aos dois jogadores jogarem ao mesmo tempo.
         1. DETALHE: UTILIZANDO MULT-THREAD.
