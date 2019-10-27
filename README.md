@@ -1,7 +1,7 @@
 # Labirinto
 Projeto para composição da nota da segunda unidade
 
-			Detalhes sobre projeto para nota da II Unidade
+Detalhes sobre projeto para nota da II Unidade
 
 				
 				
