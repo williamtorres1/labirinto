@@ -1,17 +1,21 @@
-# Joguinho
+# Labirinto
 Projeto para composição da nota da segunda unidade
 
-					Detalhes sobre projeto para nota da II Unidade
+			Detalhes sobre projeto para nota da II Unidade
 
-				Sobre a Jogabilidade
+				
+				
+Sobre a Jogabilidade
 					
-Sobre os Jogadores:
+	Sobre os Jogadores:
 
     1. Cada jogador tem 5 Pontos de Vida(HP).
     2. O jogador 1 utiliza W, A, S, D para mover-se.	
-       ex: W – Move o jogador para cima; A - Move o jogador para a esquerda; S – Move o jogador para baixo; D – Move o jogador para a direita.
+       ex: W – Move o jogador para cima; A - Move o jogador para a esquerda; S – Move o jogador para baixo; 
+       D – Move o jogador para a direita.
     3. O jogador 2 utiliza 8, 4, 5, 6 para mover-se.	
-       ex: 8 – Move o jogador para cima; 4 - Move o jogador para a esquerda; 5 – Move o jogador para baixo; 6 – Move o jogador para a direita.
+       ex: 8 – Move o jogador para cima; 4 - Move o jogador para a esquerda; 5 – Move o jogador para baixo; 
+       6 – Move o jogador para a direita.
 
 Sobre os Elementos:
 
@@ -19,7 +23,8 @@ Sobre os Elementos:
        O jogador perderá 1 Ponto de Vida ao entrar numa armadilha. 
        Após o jogador entrar naquela armadilha, ela desaparece.
        	Ex: Armadilha –> *P1*
-    2. Tocha: Ilumina um elemento às suas verticais e horizontais. Um elemento à cima, à direita, à esquerda e abaixo serão revelados.
+    2. Tocha: Ilumina um elemento às suas verticais e horizontais. 
+    Um elemento à cima, à direita, à esquerda e abaixo serão revelados.
                Ex: Tocha –> &P1&
                
 Objetivos do jogo:
@@ -63,12 +68,15 @@ Definições dos elementos da matriz
         2. Ex:[1][1]  - Ponto inicial do jogador 1.
               [1][10] - Ponto inicial do jogador 2.
     2. Matriz 10x10.
-    3. Armadilhas(TRAP): Podem existir até 32 armadilhas(de 0 à 32). Em cada elemento da matriz[i][j], testar a chance de 25% de conter uma armadilha(trap) naquele elemento.
+    3. Armadilhas(TRAP): Podem existir até 32 armadilhas(de 0 à 32).
+    Em cada elemento da matriz[i][j], testar a chance de 25% de conter uma armadilha(trap) naquele elemento.
        Ex: Se for sorteado qualquer número entre de 1 à 25, colocar uma armadilha.
-    4. Tochas(FIRE): Podem existir até 5 tochas(de 0 à 5). Em cada elemento, testar a possibilidade de 15% de conter uma tocha(fire).
+    4. Tochas(FIRE): 
+    Podem existir até 5 tochas(de 0 à 5). Em cada elemento, testar a possibilidade de 15% de conter uma tocha(fire).
     5. Ex: Se for sorteado qualquer número entre 1 à 15, colocar uma tocha.
        se cair qualquer numero de 1 à 25, colocar um fire.
-    6. Tesouro(OURO ou GOLD): Pode existir 1, e somente 1 ouro, chance de 1%. Pode estar em qualquer lugar a partir da segunda linha.
+    6. Tesouro(OURO ou GOLD): 
+    Pode existir 1, e somente 1 ouro, chance de 1%. Pode estar em qualquer lugar a partir da segunda linha.
        Ex: Não pode estar na primeira linha, ou seja, da segunda para baixo.
             Exceções descritas nos Bônus
     7. Ordem de preencher os elementos:
