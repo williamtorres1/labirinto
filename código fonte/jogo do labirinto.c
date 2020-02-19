@@ -21,7 +21,8 @@ void sorteio_passos(int *passos)/**Funcao p/ sortear quantos passos serao realiz
 	/**Valor sorteado deve estar entre 3 e 10, sendo a condicao verdadeira, o laco termina **/
 }
 void show_map(int mapa2[12][12])
-{	system("cls");
+{	int i,j;
+    system("cls");
 	system("color b");
     messages(1,0);
     /** 0 --- PAREDE HORIZONTAL
@@ -44,9 +45,9 @@ void show_map(int mapa2[12][12])
        54 --- TESOURO ENCONTRADO PELO PLAYER 1
        64 --- TESOURO ENCONTRADO PELO PLAYER 2
     **/
-    for(int i=0;i<12;i++)
+    for(i=0;i<12;i++)
     {
-        for(int j=0;j<12;j++)
+        for(j=0;j<12;j++)
         {
             printf("\t");
             if(mapa2[i][j]==0)
@@ -197,6 +198,7 @@ Foi criada uma funcao, para os elementos nao alterarem durante a execucao do pro
     int tochas=0,num_tocha=0,where_tocha=0;//mesma logica das armadilhas
     int ouro=0,where_ouro=0;//ouro = tesouro
                             //mesma logica das armadilhas, mas podendo conter somente um ouro no mapa, e PRECISA TER UM tesouro
+    int i, j;
     mapa1[1][1]=9;
     mapa1[1][10]=9;
     mapa1[10][1]=9;
@@ -205,8 +207,8 @@ Foi criada uma funcao, para os elementos nao alterarem durante a execucao do pro
     do      //laco para o numero de armadilhas nao passar de 32
     {num_trap=rand()%33;
 	}while(num_trap>32);
-    for(int i=1;i<11;i++)
-        for(int j=1;j<11;j++)
+    for(i=1;i<11;i++)
+        for(j=1;j<11;j++)
         {
             do      //laco para sortear a chance de cair uma armmadilha num elemento da matriz
                     //nao podendo exceder 100
@@ -229,8 +231,8 @@ Foi criada uma funcao, para os elementos nao alterarem durante a execucao do pro
     do      //laco para o numero de tochas nao passar de 5
     {num_tocha=rand()%6;
 	}while(num_tocha>5);
-    for(int i=2;i<10;i++)
-        for(int j=1;j<11;j++)
+    for(i=2;i<10;i++)
+        for(j=1;j<11;j++)
         {do      //laco para sortear a chance de cair uma tocha num elemento da matriz nao podendo exceder 100
             {where_tocha=rand()%101;
             }while(where_tocha>101);
@@ -248,8 +250,8 @@ Foi criada uma funcao, para os elementos nao alterarem durante a execucao do pro
 
     //OURO
     do
-    {for(int i=2;i<10;i++)
-        for(int j=1;j<11;j++)
+    {for(i=2;i<10;i++)
+        for(j=1;j<11;j++)
             {
             do
             {where_ouro=rand()%101;
@@ -728,9 +730,10 @@ void movimentacao2(int *hp1,int *hp2, int *ouro, int *x,int *y,int mapa1[][12])
 
 void escolha_player(int player)
 {
+    int i;
     printf("Jogador %d, onde deseja comecar a jogar?\n",player);
 	printf("||  ==   ==   ==   ==   ==   ==   ==  ==  ==  ==  ||\n||  1    --   --   --   --   --   --  --  --  2   ||\n");
-	for(int i = 0 ; i < 8 ; i++)
+	for(i = 0 ; i < 8 ; i++)
 /** Este laco eh so para economizar linhas, como temos 8 linhas que serao repetidas, por que nao usar um laco?  */
             printf("||  --   --   --   --   --   --   --  --  --  --  ||\n");
 	printf("||  3    --   --   --   --   --   --  --  --  4   ||\n||  ==   ==   ==   ==   ==   ==   ==  ==  ==  ==  ||\n");
@@ -794,7 +797,7 @@ if(user1 == 1 || user1 == 2 || user1 == 3 || user1 == 4)
             y=10;
         }
     }
-/** Se o Jogador digitar algum valor errado, ele ira iniciar o jogo a partir das coordenadas padrão */
+/** Se o Jogador digitar algum valor errado, ele ira iniciar o jogo a partir das coordenadas padrï¿½o */
     else if(user1 != 1 || user1 != 2 || user1 != 3 || user1 != 4)
     {   x=1;
         y=1;

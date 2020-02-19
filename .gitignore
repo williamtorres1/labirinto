@@ -1,0 +1,4 @@
+# Binary files
+*.o
+# Executable files
+*.exe
