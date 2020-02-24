@@ -1,5 +1,5 @@
 /************************************
-*   File:   jogo do labirinto.cpp   *
+*   File:   jogo do labirinto.c     *
 *   Author: William Torres          *
 *************************************/
 
