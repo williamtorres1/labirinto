@@ -1,8 +1,5 @@
 # Labirinto
-Projeto para composição da nota da segunda unidade
-
-Detalhes sobre projeto para nota da II Unidade
-
+Projeto para a nota da segunda unidade
 ## Iniciando
 Utilizando o [GCC Compiller](https://gcc.gnu.org/), vá para a pasta que está o arquivo .c e digite o seguinte comando no terminal:
 ```
@@ -113,7 +110,7 @@ Pronto! Agora você pode utilizar este jogo.
         2. Ex: Se algum jogador encontrou o tesouro, a partida tem que acabar.
 
 ## BÔNUS - para recuperação da primeira unidade
-    1. Se o programa permitir que os jogadores escolham onde querem começar a partida, desde que seja um destes 4 pontos.
+    1. Se o programa permitir que os jogadores escolham a posição inicial, sendo um destes 4 pontos.
         1. Ex:
 		[01][1]			[01][10]
 		[10][1]			[10][10]
@@ -123,4 +120,5 @@ Pronto! Agora você pode utilizar este jogo.
         2. DETALHE: Os jogadores NÃO PODEM começar do mesmo ponto.
     3. Se permitir 4 jogadores jogarem ao mesmo tempo.
   
-					NUNCA USEM VARIÁVEIS GLOBAIS
+# ATENÇÃO
+NÃO DEVE-SE UTILIZAR VARIÁVEIS GLOBAIS
