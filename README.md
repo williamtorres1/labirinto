@@ -3,9 +3,8 @@ Projeto para a nota da segunda unidade
 ## Iniciando
 Utilizando o [GCC Compiller](https://gcc.gnu.org/), vá para a pasta que está o arquivo .c e digite o seguinte comando no terminal:
 ```
-	g++ -o <nome do arquivo> <nome do arquivo>.c
+	g++ -o 'jogo do labirinto' 'jogo do labirinto'.c
 ```
-Você pode renomear o arquivo com o nome "main", para ficar mais fácil utilizar o terminal.
 Pronto! Agora você pode utilizar este jogo.
 
 ## Sobre a Jogabilidade
