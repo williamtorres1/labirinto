@@ -1,10 +1,14 @@
 # Labirinto
 
-Projeto para a nota da segunda unidade
+Projeto para a nota da segunda unidade da disciplina Linguagem de Programação.
+
+![Demonstration](assets/demonstration.gif)
 
 ## Indice
 
 - [Iniciando](#iniciando)
+  - [Linux](#linux)
+  - [Windows](#windows)
 - [Sobre a Jogabilidade](#sobre-a-jogabilidade)
 	- [Jogadores](#jogadores)
 	- [Elementos](#elementos)
@@ -18,7 +22,14 @@ Projeto para a nota da segunda unidade
 
 ## Iniciando
 
-No Windows, utilizando o [GCC Compiller](https://gcc.gnu.org/), vá para a pasta que está o arquivo .c e digite o seguinte comando no terminal:
+### Linux
+No Linux, utilizando o [GCC Compiller](https://gcc.gnu.org/), vá para a pasta que está o arquivo .c e digite o seguinte comando no terminal:
+```shell
+$  g++ -o 'jogo do labirinto' 'jogo do labirinto'.c
+```
+
+### Windows
+Com Windows, utilizando o [MinGW](https://www.mundodoshackers.com.br/como-instalar-o-gcc-no-windows), vá para a pasta que está o arquivo .c e digite o seguinte comando no terminal:
 ```shell
 $  g++ -o 'jogo do labirinto' 'jogo do labirinto'.c
 ```
