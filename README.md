@@ -1,6 +1,6 @@
-# Labirinto
+<h1 align="center">Labirinto</h1>
 
-Projeto para a nota da segunda unidade da disciplina Linguagem de Programação.
+<p align="center">Projeto para a nota da segunda unidade da disciplina Linguagem de Programação.</p>
 
 ![Demonstration](assets/demonstration.gif)
 
