@@ -1,3 +1,6 @@
+#ifndef MESSAGES_H
+#define MESSAGES_H
+
 #include <stdio.h>
 #include <stdlib.h>
 void messages(int situacao,int player)/**Funcao p/ Mostrar todas as mensagens aos jogadores.
@@ -36,3 +39,5 @@ Necessita de 2 parametros, a mensagem que sera mostrada e a qual jogador ela se 
         }
 	}
 }
+
+#endif

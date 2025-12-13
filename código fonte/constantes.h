@@ -1,0 +1,74 @@
+#ifndef CONSTANTES_H
+#define CONSTANTES_H
+
+/**     0 --- PAREDE HORIZONTAL
+        1 --- NADA
+
+        2 --- ARMADILHAS
+        3 --- TOCHAS
+        4 --- TESOURO
+        
+        5 --- PLAYER 1
+        6 --- PLAYER 2
+
+        7 --- ESPACO VAZIO
+
+        8 --- PAREDE VERTICAL
+        9 --- POSICAO INICIAL
+       10 --- PLAYER 1 E 2 JUNTOS
+       21 --- ARMADILHA REVELADA
+       22 --- ARMADILHA ENCONTRADA
+       31 --- TOCHA REVELADA
+       33 --- TOCHA ENCONTRADA
+       41 --- TESOURO REVELADO
+       44 --- TESOURO ENCONTRADO
+       54 --- TESOURO ENCONTRADO PELO PLAYER 1
+       64 --- TESOURO ENCONTRADO PELO PLAYER 2
+*/
+
+#define HP_MAXIMO 5
+
+#define PASSOS_MINIMO 3
+#define PASSOS_MAXIMO 10
+
+#define ARMADILHAS_MAXIMO 32
+#define TOCHAS_MAXIMO 5
+#define TESOURO_MAXIMO 1
+#define CHANCE_ARMADILHAS 25
+#define CHANCE_TOCHAS 15
+
+#define MATRIZ_TAMANHO 12
+
+
+typedef enum {
+
+  //Terreno
+  PAREDE_HORIZONTAL = 0,
+  PAREDE_VERTICAL = 8,
+  ESPACO = 1,
+  ESPACO_VAZIO = 7,
+
+  // Itens especiais
+  ARMADILHA = 2,
+  TOCHA = 3,
+  TESOURO = 4,
+
+  // Jogadores
+  JOGADOR_1 = 5,
+  JOGADOR_2 = 6,
+  POSICAO_INICIAL = 9,
+  JOGADORES_JUNTOS = 10,
+
+  ARMADILHA_REVELADA = 21,
+  ARMADILHA_ENCONTRADA = 22,
+  TOCHA_REVELADA = 31,
+  TOCHA_ENCONTRADA = 33,
+  TESOURO_REVELADO = 41,
+  TESOURO_ENCONTRADO = 44,
+  TESOURO_ENCONTRADO_JOGADOR_1 = 54,
+  TESOURO_ENCONTRADO_JOGADOR_2 = 64,
+
+
+} TipoDeCelula;
+
+#endif
