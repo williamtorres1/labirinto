@@ -809,7 +809,7 @@ if(user1 == 1 || user1 == 2 || user1 == 3 || user1 == 4)
 /** Mesma coisa do algoritmo acima, porem a posicao escolhida tem de ser diferente da escolhida pelo jogador 1
  *  Se o jogador 1 digitar algum valor invalido, ele comecara da linha 1 e coluna 1
  *  Logo, o Jogador II nao podera comecar nessa posicao                             */
-	if(user2 != user1 && user2 == 1 || user2 == 2 || user2 == 3 || user2 == 4)
+	if((user2 != user1 && user2 == 1) || user2 == 2 || user2 == 3 || user2 == 4)
     {   if(user2==1)
         {   w=1;
             z=1;
